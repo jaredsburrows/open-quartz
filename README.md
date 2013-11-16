@@ -5,6 +5,7 @@ Open Source Google Glass Development
 
 ###Third Party Applications(/third-party folder):
 Here are helpful applications to install on your Glass in order to start testing and developing.
+- Android Applications
  - Barcode Scanner
  - Capture Activity
  - Launcher
@@ -15,9 +16,12 @@ Here are helpful applications to install on your Glass in order to start testing
    - https://play.google.com/store/apps/details?id=org.opencv.engine
  - Terminal Emulator
    - https://play.google.com/store/apps/details?id=jackpal.androidterm 
+- Helpful Tools
+ - Android Screen Monitor
+   - https://code.google.com/p/android-screen-monitor/
 
 ###Google Glass Application Source Code(/glass-source folder):
-Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down.
+Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down. The decompiled Google Glass applications are included.(/glass-srouce/xe11-jars). Here are a list of tools to decompile the native APKs:
  - Decompiling APKs 
    - Dex2Jar
      - https://code.google.com/p/dex2jar
@@ -34,8 +38,10 @@ Since the GDK is not yet released, we can look around how the current Google Gla
    - APK Inspector
      - https://code.google.com/p/apkinspector/ (old link)
      - https://github.com/honeynet/apkinspector/
+   - http://www.decompileandroid.com/
 
 Read more: 
+ - http://stackoverflow.com/questions/3122635/is-it-possible-to-decompile-an-android-apk-file
  - http://blog.burrowsapps.com/2012/02/hacking-facebook-for-android.html
  - http://blog.burrowsapps.com/2012/05/how-to-reverse-engineer-android-malware.html
 
@@ -54,6 +60,8 @@ Since there is no "Google Play" Android Market for the Glass yet, we have to sid
      - adb shell dumpsys cpuinfo
      - adb shell dumpsys meminfo
        - adb shell dumpsys meminfo PACKAGE.NAME
+ - Show the AndroidManifest
+   - aapt dump xmltree FILE.apk AndroidManifest.xml
 
 Read more: 
  - http://developer.android.com/tools/help/adb.html

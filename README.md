@@ -21,7 +21,10 @@ Here are helpful applications to install on your Glass in order to start testing
    - https://code.google.com/p/android-screen-monitor/
 
 ###Google Glass Application Source Code(/glass-source folder):
-Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down. The decompiled Google Glass applications are included.(/glass-srouce/xe11-jars). Here are a list of tools to decompile the native APKs:
+
+####UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method.
+
+~~Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down. The decompiled Google Glass applications are included.~~ Here are a list of tools to decompile the native APKs:
  - Decompiling APKs 
    - Dex2Jar
      - https://code.google.com/p/dex2jar

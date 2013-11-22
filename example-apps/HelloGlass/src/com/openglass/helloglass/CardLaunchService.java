@@ -25,6 +25,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.google.android.glass.timeline.LiveCard;
@@ -32,10 +33,10 @@ import com.google.android.glass.timeline.TimelineManager;
 
 public class CardLaunchService extends Service 
 {
-	TimelineManager mTimelineManager;
-	LiveCard mLiveCard;
-	String cardID = "test";
-	
+	private TimelineManager mTimelineManager;
+	private LiveCard mLiveCard;
+	private String cardID = "test";
+
 	@Override
 	public void onCreate() 
 	{
@@ -47,27 +48,39 @@ public class CardLaunchService extends Service
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) 
 	{
-		mLiveCard = mTimelineManager.getLiveCard(cardID);
+		//the live card is not created and published yet
+		if (mLiveCard == null)
+		{
+			mLiveCard = mTimelineManager.getLiveCard(cardID);
+			
+			//set the views of the card from a xml file 
+			mLiveCard.setViews(new RemoteViews(this.getPackageName(),R.layout.test_layout));
+			mLiveCard.setNonSilent(true);
 
-		//set the views of the card from a xml file 
-		mLiveCard.setViews(new RemoteViews(this.getPackageName(),R.layout.test_layout));
-		mLiveCard.setNonSilent(true);
-		
-		//sets the menu of the card 
-		Intent menuIntent = new Intent(this, MenuActivity.class);
-		mLiveCard.setAction(PendingIntent.getActivity(this, 0, menuIntent, 0));
-		
-		//publish the card to the timeline 
-		mLiveCard.publish();
+			//sets the menu of the card 
+			Intent menu = new Intent(this, MenuActivity.class);
+			mLiveCard.setAction(PendingIntent.getActivity(this, 0, menu, 0));
+
+			//publish the card to the timeline 
+			mLiveCard.publish();
+		}
+		//Live card is already published 
+		else 
+		{
+			//Jumping to the card not implemented in the gdk yet
+		}
 		return START_STICKY;
 	}
-	
+
 	@Override
 	public void onDestroy() 
 	{
 		//remove the card from
-		mLiveCard.unpublish();
-		mLiveCard = null;
+        if (mLiveCard != null && mLiveCard.isPublished()) 
+        {
+            mLiveCard.unpublish();
+            mLiveCard = null;
+        }
 		super.onDestroy();
 	}
 

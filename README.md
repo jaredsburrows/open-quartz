@@ -3,29 +3,20 @@ OpenGlass
 
 Open Source Google Glass Development
 
-###Third Party Applications(/third-party folder):
-Here are helpful applications to install on your Glass in order to start testing and developing.
-- Android Applications
- - API Demos
- - Barcode Scanner
- - Capture Activity
- - Dev Tools
- - Launcher
-   - Regular ICS Launcher
- - Launchy (update to XE11 first) 
-   - https://github.com/kaze0/launchy
- - OpenCV for Android
-   - https://play.google.com/store/apps/details?id=org.opencv.engine
- - Settings
- - Terminal Emulator
-   - https://play.google.com/store/apps/details?id=jackpal.androidterm 
-- Helpful Tools
- - Android Screen Monitor
-   - https://code.google.com/p/android-screen-monitor/
+### Table of Contents  
+ - [Example Applications](#example-apps)  
+ - [Google Glass Application Sources](#glass-source)  
+ - [Third Party Applications](#third-party)  
 
-###Google Glass Application Source Code(/glass-source folder):
+<a name="example-apps"/>
+### Example Applications for Google Glass([/example-apps](../master/example-apps))
+ - [HelloGlass](../master/example-apps/HelloGlass)
+  - Basic "HelloWorld"
 
-####UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method.
+<a name="glass-source"/>
+### Google Glass Application Source Code([/glass-source](../master/glass-source)):
+
+#### UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method.
 
 ~~Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down. The decompiled Google Glass applications are included.~~ Here are a list of tools to decompile the native APKs:
  - Decompiling APKs 
@@ -51,7 +42,28 @@ Read more:
  - http://blog.burrowsapps.com/2012/02/hacking-facebook-for-android.html
  - http://blog.burrowsapps.com/2012/05/how-to-reverse-engineer-android-malware.html
 
-###Basic ADB Usage(From Terminal or CMD Prompt):
+<a name="third-party"/>
+### Third Party Applications([/third-party](../master/third-party)):
+Here are helpful applications to install on your Glass in order to start testing and developing.
+- Android Applications
+ - API Demos
+ - Barcode Scanner
+ - Capture Activity
+ - Dev Tools
+ - Launcher
+   - Regular ICS Launcher
+ - Launchy (update to XE11 first) 
+   - https://github.com/kaze0/launchy
+ - OpenCV for Android
+   - https://play.google.com/store/apps/details?id=org.opencv.engine
+ - Settings
+ - Terminal Emulator
+   - https://play.google.com/store/apps/details?id=jackpal.androidterm 
+- Helpful Tools
+ - Android Screen Monitor
+   - https://code.google.com/p/android-screen-monitor/
+
+### Basic ADB Usage(From Terminal or CMD Prompt):
 Since there is no "Google Play" Android Market for the Glass yet, we have to side load Android applications for now. 
  - Installing Applications(.apks):
    - adb install -r FILE.apk
@@ -66,7 +78,7 @@ Since there is no "Google Play" Android Market for the Glass yet, we have to sid
      - adb shell dumpsys cpuinfo
      - adb shell dumpsys meminfo
        - adb shell dumpsys meminfo PACKAGE.NAME
-   - adb shell cat /system/build.prop | grep "product"
+   - adb shell cat "/system/build.prop" | grep "product"
  - Show the AndroidManifest
    - aapt dump xmltree FILE.apk AndroidManifest.xml
 
@@ -74,13 +86,13 @@ Read more:
  - http://developer.android.com/tools/help/adb.html
  - http://stackoverflow.com/questions/11201659/whats-android-adb-shell-dumpsys-tool-and-its-benefits
 
-###Current Open Source Projects:
+### Current Open Source Projects:
  - OpenShades: WearScript
    - https://github.com/OpenShades/wearscript
  - Example of Decompiled Resources:
    - https://github.com/zhuowei/Xenologer-src-glasshome
 
-###Pre-GDK Glass Applications:
+### Pre-GDK Glass Applications:
  - Compass
    - https://www.github.com/googleglass/apk-compass-sample
  - Level
@@ -90,11 +102,11 @@ Read more:
  - Waveform
    - https://www.github.com/googleglass/apk-waveform-sample
 
-###Important Libraries:
+### Important Libraries:
  - OpenCV(OpenCV for Android)
-   - http://sourceforge.net/projects/opencvlibrary/files/opencv-android/2.4.6/OpenCV-2.4.6-android-sdk-r2.zip/download
+   - http://opencv.org/platforms/android.html
 
-###Google Glass Resources:
+### Google Glass Resources:
  - Overview
    - https://developers.google.com/glass/
  - Basic Setup

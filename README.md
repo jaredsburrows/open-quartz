@@ -10,13 +10,19 @@ Open Source Google Glass Development
 
 <a name="example-apps"/>
 ### Example Applications for Google Glass([/example-apps](../master/example-apps))
- - [HelloGlass](../master/example-apps/HelloGlass)
-  - Basic "HelloWorld"
+ - GDK
+   - [Hello Glass](../master/example-apps/HelloGlass) - Andre Compagno
+     - Basic "HelloWorld"
+   - [Voice Example](../master/example-apps/Voice Example) - Andre Compagno
+     - Voice Recognition Example
+ - Misc
+   - [Glass Preview](../master/example-apps/GlassPreview) - Jared Burrows
+     - "Hotfix" for Google Glass camera preview - post-XE11
 
 <a name="glass-source"/>
 ### Google Glass Application Source Code([/glass-source](../master/glass-source)):
 
-#### UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method.
+** UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method. **
 
 ~~Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down. The decompiled Google Glass applications are included.~~ Here are a list of tools to decompile the native APKs:
  - Decompiling APKs 
@@ -65,8 +71,9 @@ Here are helpful applications to install on your Glass in order to start testing
 
 ### Basic ADB Usage(From Terminal or CMD Prompt):
 Since there is no "Google Play" Android Market for the Glass yet, we have to side load Android applications for now. 
- - Installing Applications(.apks):
+ - Installing/Uninstall Applications(.apks):
    - adb install -r FILE.apk
+   - adb uninstall FILE.apk
  - Running the Application:
    - adb shell am start -n PACKAGE.NAME/.MAIN.ACTIVITY.NAME
  - List all Packages on your Android Device:
@@ -79,8 +86,11 @@ Since there is no "Google Play" Android Market for the Glass yet, we have to sid
      - adb shell dumpsys meminfo
        - adb shell dumpsys meminfo PACKAGE.NAME
    - adb shell cat "/system/build.prop" | grep "product"
- - Show the AndroidManifest
+ - Show the AndroidManifest for an APK
    - aapt dump xmltree FILE.apk AndroidManifest.xml
+ - Screenshots from Commandline
+   - adb shell /system/bin/screencap -p /sdcard/screenshot.png
+   - adb pull /sdcard/screenshot.png screenshot.png
 
 Read more: 
  - http://developer.android.com/tools/help/adb.html

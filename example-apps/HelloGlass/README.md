@@ -15,7 +15,7 @@ This application is a Hello World sample for Google Glass using the GDK.
 License
 ========
 
-Copyright (C) 2013 OpenGlass
+Copyright (C) 2013 OpenQuartz
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
  

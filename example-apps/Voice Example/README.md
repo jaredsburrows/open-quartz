@@ -19,7 +19,7 @@ This application is an example of how to get text from the voice recognition on 
 License
 ========
 
-Copyright (C) 2013 OpenGlass
+Copyright (C) 2013 OpenQuartz
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
  

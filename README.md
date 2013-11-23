@@ -1,7 +1,9 @@
-OpenGlass
+OpenQuartz
 =========
 
 Open Source Google Glass Development
+
+Much like quartz sand is the main ingedient in most commercial glass, we at OpenQuartz want to be the main "ingredient" in future development for Goggle Glass
 
 ### Table of Contents  
  - [Example Applications](#example-apps)  
@@ -136,7 +138,7 @@ Read more:
 License
 ========
 
-Copyright (C) 2013 OpenGlass
+Copyright (C) 2013 OpenQuartz
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
  

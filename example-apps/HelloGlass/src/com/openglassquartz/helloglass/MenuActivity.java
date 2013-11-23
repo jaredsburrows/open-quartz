@@ -1,9 +1,9 @@
 /**
- * OpenGlass Hello World Example
- * Github - https://github.com/jaredsburrows/OpenGlass
+ * OpenQuartz Hello World Example
+ * Github - https://github.com/jaredsburrows/OpenQuartz
  * @author Andre Compagno
  * 
- * Copyright (C) 2013 OpenGlass
+ * Copyright (C) 2013 OpenQuartz
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
  */
 
 
-package com.openglass.helloglass;
+package com.openglassquartz.helloglass;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,6 +27,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.openquartz.helloglass.R;
+
 
 public class MenuActivity extends Activity 
 {

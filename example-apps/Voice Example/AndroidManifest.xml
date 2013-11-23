@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	OpenGlass Voice Example
-	Github - https://github.com/jaredsburrows/OpenGlass
+	OpenQuartz Voice Example
+	Github - https://github.com/jaredsburrows/OpenQuartz
 	@author Andre Compagno
 	
-	Copyright (C) 2013 OpenGlass
+	Copyright (C) 2013 OpenQuartz
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.openglass.voiceexample"
+    package="com.openquartz.voiceexample"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -33,13 +33,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="com.openglass.voiceexample.MenuActivity"
+            android:name="com.openquartz.voiceexample.MenuActivity"
             android:enabled="true"
             android:label="@string/app_name"
             android:theme="@style/MenuTheme" >
         </activity>
         <activity
-            android:name="com.openglass.voiceexample.ProcessSpeechActivity"
+            android:name="com.openquartz.voiceexample.ProcessSpeechActivity"
             android:enabled="true"
             android:label="@string/app_name" >
             <intent-filter>
@@ -52,7 +52,7 @@
         </activity>
 
         <service
-            android:name="com.openglass.voiceexample.CardLaunchService"
+            android:name="com.openquartz.voiceexample.CardLaunchService"
             android:enabled="true"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name" >

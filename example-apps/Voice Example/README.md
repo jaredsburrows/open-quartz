@@ -1,16 +1,20 @@
-Hello Glass
+Voice Example
 ===========
 
-This application is a Hello World sample for Google Glass using the GDK.
+This application is an example of how to get text from the voice recognition on the Google Glass using the GDK.
 
-- The application publishes a card to the users timeline which displays the text "Hello Glass!"
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/HelloGlass/screenshot-hello-glass.png)
+- The application publishes a card to the users timeline which displays what the user said
 
-- The application can be launched by using the "hello glass" voice command
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/HelloGlass/screenshot-voice-command.png)
+- The application can be launched by using the "voice example" voice command
+![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshop-voice-trigger.png)
 
-- This application also shows how to add menu options to the card
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/HelloGlass/screenshot-close-action.png)
+- The user can then can talk and what they say will be recorded and transcribed to be used in the card
+![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-regonition.png)
+![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-text1.png)
+
+- If the the card is already published, the original text will simply be changed to the new text 
+![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-regonition2.png)
+![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-text2.png)
 
 License
 ========

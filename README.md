@@ -1,9 +1,9 @@
 OpenQuartz
 =========
 
-Open Source Google Glass Development
+**Open Source Google Glass Development**
 
-Much like quartz sand is the main ingedient in most commercial glass, we at OpenQuartz want to be the main "ingredient" in future development for Goggle Glass
+Much like quartz sand is the main ingedient in most commercial glass, we at OpenQuartz want to be the main "ingredient" in future development for Google Glass
 
 ### Table of Contents  
  - [Example Applications](#example-apps)  
@@ -13,18 +13,18 @@ Much like quartz sand is the main ingedient in most commercial glass, we at Open
 <a name="example-apps"/>
 ### Example Applications for Google Glass([/example-apps](../master/example-apps))
  - GDK
-   - [Hello Glass](../master/example-apps/HelloGlass) - Andre Compagno
+   - [Hello Glass](../master/example-apps/HelloGlass) - *Andre Compagno*
      - Basic "HelloWorld"
-   - [Voice Example](../master/example-apps/Voice Example) - Andre Compagno
+   - [Voice Example](../master/example-apps/Voice Example) - *Andre Compagno*
      - Voice Recognition Example
  - Misc
-   - [Glass Preview](../master/example-apps/GlassPreview) - Jared Burrows
+   - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
 
 <a name="glass-source"/>
 ### Google Glass Application Source Code([/glass-source](../master/glass-source)):
 
-** UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method. **
+**UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method.**
 
 ~~Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down. The decompiled Google Glass applications are included.~~ Here are a list of tools to decompile the native APKs:
  - Decompiling APKs 

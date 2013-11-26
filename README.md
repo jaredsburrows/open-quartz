@@ -3,7 +3,7 @@ OpenQuartz
 
 **Open Source Google Glass Development**
 
-Much like quartz sand is the main ingedient in most commercial glass, we at OpenQuartz want to be the main "ingredient" in future development for Google Glass
+Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main ingredient in most commercial glass, we want OpenQuartz to be the main "ingredient" in the future development for Google Glass
 
 ### Table of Contents  
  - [Example Applications](#example-apps)  

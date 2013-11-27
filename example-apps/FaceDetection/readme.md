@@ -6,19 +6,24 @@ Open Source Google Glass Development
 
 Standalone Face Detection(post-XE10 hotfix)
 ===========
-Required:
+**Required:**
  - Android SDK
  - Android NDK
  - OpenCV for Android SDK
 
 **Build Standalone Library for OpenCV:**
- - Basically this will bring "libopencv_java.so" from the OpenCV SDK for Android, this way you won't have to use the OpenCV Manager
- - After importing this project into Eclipse, run this command to build the shared library:
+
+This will bring "libopencv_java.so" from the OpenCV SDK for Android, this way you won't have to use the OpenCV Manager
+
+After importing this project into Eclipse, run this command to build the shared library:
+
 
     ndk-build clean all && ndk-build
 
 
-Read more: http://docs.opencv.org/trunk/doc/tutorials/introduction/android_binary_package/dev_with_OCV_on_Android.html
+Read more:
+
+http://docs.opencv.org/trunk/doc/tutorials/introduction/android_binary_package/dev_with_OCV_on_Android.html
 
 License
 ========

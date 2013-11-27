@@ -20,7 +20,7 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
  - Misc
    - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE10
-   - [Face Detection](../master/example-apps/FaceDectection) - *Jared Burrows*
+   - [Face Detection](../master/example-apps/FaceDetection) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE10
 
 

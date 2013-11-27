@@ -20,6 +20,9 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
  - Misc
    - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE10
+   - [Face Detection](../master/example-apps/FaceDectection) - *Jared Burrows*
+     - "Hotfix" for Google Glass camera preview - post-XE10
+
 
 <a name="glass-source"/>
 ### Google Glass Application Source Code([/glass-source](../master/glass-source)):
@@ -99,6 +102,8 @@ Read more:
  - http://stackoverflow.com/questions/11201659/whats-android-adb-shell-dumpsys-tool-and-its-benefits
 
 ### Current Open Source Projects:
+ - Google Glass Playground
+   - https://github.com/space150/google-glass-playground
  - OpenShades: WearScript
    - https://github.com/OpenShades/wearscript
  - Example of Decompiled Resources:

@@ -4,14 +4,21 @@ OpenGlass
 Open Source Google Glass Development
 
 
-Example Applications for Google Glass
+Standalone Face Detection(post-XE10 hotfix)
 ===========
-Here are different applications that utilize the GDK and Mirror API or the standard Android SDK.
+Required:
+ - Android SDK
+ - Android NDK
+ - OpenCV for Android SDK
 
-- [Android SDK](http://developer.android.com/sdk/index.html)
-- [GDK](https://developers.google.com/glass/develop/gdk/index)
-- [Mirror API](https://developers.google.com/glass/develop/mirror/index)
-- [OpenCV](http://opencv.org/platforms/android.html)
+**Build Standalone Library for OpenCV:**
+ - Basically this will bring "libopencv_java.so" from the OpenCV SDK for Android, this way you won't have to use the OpenCV Manager
+ - After importing this project into Eclipse, run this command to build the shared library:
+
+    ndk-build clean all && ndk-build
+
+
+Read more: http://docs.opencv.org/trunk/doc/tutorials/introduction/android_binary_package/dev_with_OCV_on_Android.html
 
 License
 ========

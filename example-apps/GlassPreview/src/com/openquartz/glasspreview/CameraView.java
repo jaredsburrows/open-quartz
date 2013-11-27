@@ -20,12 +20,9 @@
 
 package com.openquartz.glasspreview;
 
-import java.util.List;
-
 import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -93,7 +90,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback
 	}
 
 	/**
-	 * Important HotFix for Google Glass (post-XE11) update
+	 * Important HotFix for Google Glass (post-XE10) update
 	 * @param camera Object
 	 */
 	public void setCameraParameters(Camera camera)
@@ -101,9 +98,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback
 		if (camera != null)
 		{
 			Parameters parameters = camera.getParameters();
-			List<Size> sizeList = parameters.getSupportedPreviewSizes();
-			Size size = sizeList.get(3);
-			parameters.setPreviewSize(size.width, size.height);
+			parameters.setPreviewFpsRange(30000, 30000);
 			camera.setParameters(parameters);	
 		}
 	}

@@ -19,7 +19,7 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - Voice Recognition Example
  - Misc
    - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
-     - "Hotfix" for Google Glass camera preview - post-XE11
+     - "Hotfix" for Google Glass camera preview - post-XE10
 
 <a name="glass-source"/>
 ### Google Glass Application Source Code([/glass-source](../master/glass-source)):
@@ -72,7 +72,7 @@ Here are helpful applications to install on your Glass in order to start testing
    - https://code.google.com/p/android-screen-monitor/
 
 ### Basic ADB Usage(From Terminal or CMD Prompt):
-Since there is no "Google Play" Android Market for the Glass yet, we have to side load Android applications for now. 
+Since there is no "Google Play" for the Glass yet, we have to side load Android applications for now. 
  - Installing/Uninstall Applications(.apks):
    - adb install -r FILE.apk
    - adb uninstall FILE.apk
@@ -115,8 +115,16 @@ Read more:
    - https://www.github.com/googleglass/apk-waveform-sample
 
 ### Important Libraries:
- - OpenCV(OpenCV for Android)
-   - http://opencv.org/platforms/android.html
+ - Google
+   - Android SDK
+     - http://developer.android.com/sdk/index.html
+   - Android NDK (Native Development Kit)
+     - http://developer.android.com/tools/sdk/ndk/index.html
+   - GDK (Glass Development Kit)
+     - https://developers.google.com/glass/develop/gdk/
+ - Misc
+   - OpenCV(OpenCV for Android)
+     - http://opencv.org/platforms/android.html
 
 ### Google Glass Resources:
  - Overview
@@ -128,7 +136,7 @@ Read more:
  - Developer Guidelines
    - https://developers.google.com/glass/guidelines
  - GDK
-   - https://developers.google.com/glass/gdk
+   - https://developers.google.com/glass/develop/gdk/
  - Github
    - https://github.com/googleglass
  - Boot Images and Kernels

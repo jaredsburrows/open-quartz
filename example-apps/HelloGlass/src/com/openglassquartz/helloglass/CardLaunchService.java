@@ -37,7 +37,7 @@ public class CardLaunchService extends Service
 {
 	private TimelineManager mTimelineManager;
 	private LiveCard mLiveCard;
-	private String cardID = "test";
+	private String cardID = "HelloGlassLiveCard";
 
 	@Override
 	public void onCreate() 
@@ -53,18 +53,19 @@ public class CardLaunchService extends Service
 		//the live card is not created and published yet
 		if (mLiveCard == null)
 		{
-			mLiveCard = mTimelineManager.getLiveCard(cardID);
+			//create live card *New in XE12 createLiveCard replaced getLiveCard from XE11*
+			mLiveCard = mTimelineManager.createLiveCard(cardID);
 			
 			//set the views of the card from a xml file 
-			mLiveCard.setViews(new RemoteViews(this.getPackageName(),R.layout.test_layout));
-			mLiveCard.setNonSilent(true);
+			mLiveCard.setViews(new RemoteViews(this.getPackageName(),R.layout.card_layout));
 
 			//sets the menu of the card 
 			Intent menu = new Intent(this, MenuActivity.class);
 			mLiveCard.setAction(PendingIntent.getActivity(this, 0, menu, 0));
 
 			//publish the card to the timeline 
-			mLiveCard.publish();
+			//Set publish mode to reveal *New in XE12 replaced setNonSilent method from XE11*
+			mLiveCard.publish(LiveCard.PublishMode.REVEAL);
 		}
 		//Live card is already published 
 		else 

@@ -25,6 +25,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.speech.RecognizerIntent;
 import android.widget.RemoteViews;
 
 import com.google.android.glass.timeline.LiveCard;
@@ -34,7 +35,7 @@ public class CardLaunchService extends Service
 {
 	private TimelineManager mTimelineManager;
 	private LiveCard mLiveCard;
-	private String cardID = "test";
+	private String cardID = "VoiceLiveCard";
 
 	@Override
 	public void onCreate() 
@@ -50,29 +51,33 @@ public class CardLaunchService extends Service
 		//Check if the live card has already been created
 		if (mLiveCard == null)
 		{
-			mLiveCard = mTimelineManager.getLiveCard(cardID);
-			mLiveCard.setNonSilent(true);
+			//create live card *New in XE12 createLiveCard replaced getLiveCard from XE11*
+			mLiveCard = mTimelineManager.createLiveCard(cardID);
 		}
 		//Create the remote views from the layout
-		RemoteViews remoteViews = new RemoteViews(this.getPackageName(),R.layout.test_layout);
+		RemoteViews remoteViews = new RemoteViews(this.getPackageName(),R.layout.card_layout);
+		//Set the text to the results from the voice recognition activity
+		remoteViews.setTextViewText(R.id.text_view,intent.getExtras().getStringArrayList(RecognizerIntent.EXTRA_RESULTS).get(0));
+
 		//set the text of the text view to the the text from the speech recognition
-		remoteViews.setTextViewText(R.id.text_view,intent.getStringExtra("speechText"));
+		//		remoteViews.setTextViewText(R.id.text_view,intent.getStringExtra("speechText"));
 		//set the views of the card
 		mLiveCard.setViews(remoteViews);
 
 		//sets the menu of the card 
 		Intent menu = new Intent(this, MenuActivity.class);
 		mLiveCard.setAction(PendingIntent.getActivity(this, 0, menu, 0));
-		
+
 		//Check if the card is already publish
 		if (mLiveCard.isPublished())
 		{
 			//if it is, unpublish the card
 			mLiveCard.unpublish();
 		}
-		
+
 		//publish the card to the timeline 
-		mLiveCard.publish();
+		//Set publish mode to reveal *New in XE12 replaced setNonSilent method from XE11*
+		mLiveCard.publish(LiveCard.PublishMode.REVEAL);
 		return START_STICKY;
 	}
 

@@ -36,7 +36,7 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
  - Decompiling compiled Java (.class) files
    - Jad 
      - http://www.varaneckas.com/jad
- - View decopmiled JAR files from Dex2Jar
+ - View decompiled JAR files from Dex2Jar
    - JD-GUI
      - http://jd.benow.ca/
  - Dumping APK Resources

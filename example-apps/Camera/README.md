@@ -1,8 +1,11 @@
-Glass Preview
+Google Glass Camera
 ===========
 
-This application is exmaple of how to use the camera on the Google Glass using the "hotfix" for the post-XE11 update.
+Basic camera application for Google Glass.
 
+Tap Once: Take a photo
+
+Tap Twice: Take a video
 
 License
 ========

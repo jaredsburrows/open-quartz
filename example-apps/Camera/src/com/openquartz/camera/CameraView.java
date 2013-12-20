@@ -90,7 +90,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback
 	}
 
 	/**
-	 * Important HotFix for Google Glass (post-XE10) update
+	 * Important HotFix for Google Glass (post-XE11) update
 	 * @param camera Object
 	 */
 	public void setCameraParameters(Camera camera)
@@ -103,18 +103,6 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback
 		}
 	}
 	
-	/**
-	 * Start the camera from use
-	 */
-	public void startCamera() 
-	{
-		if (camera != null) 
-		{
-			camera = Camera.open();
-//			camera = getCameraInstance();
-		}
-	}
-
 	/**
 	 * Release the camera from use
 	 */

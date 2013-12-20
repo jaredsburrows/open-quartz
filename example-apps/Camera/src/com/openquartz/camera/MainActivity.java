@@ -76,7 +76,7 @@ public class MainActivity extends Activity
 		{
 			cameraView.releaseCamera();
 		}
-		
+
 		// Set the view
 		this.setContentView(cameraView);
 	}
@@ -97,6 +97,11 @@ public class MainActivity extends Activity
 		}
 	}
 
+	/**
+	 * Gesture detection for fingers on the Glass
+	 * @param context
+	 * @return
+	 */
 	private GestureDetector createGestureDetector(Context context) 
 	{	
 		GestureDetector gestureDetector = new GestureDetector(context);
@@ -107,28 +112,29 @@ public class MainActivity extends Activity
 			@Override
 			public boolean onGesture(Gesture gesture) 
 			{
+				// Make sure view is initiated
 				if (cameraView != null)
 				{
 					// Tap with a single finger for photo
 					if (gesture == Gesture.TAP) 
 					{
 						Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-						if (intent != null )
+						if (intent != null)
 						{
-						startActivityForResult(intent, TAKE_PICTURE_REQUEST);
+							startActivityForResult(intent, TAKE_PICTURE_REQUEST);
 						}
-						
+
 						return true;
 					}
 					// Tap with 2 fingers for video
 					else if (gesture == Gesture.TWO_TAP) 
 					{
 						Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-						if (intent != null )
+						if (intent != null)
 						{
-						startActivityForResult(intent, TAKE_VIDEO_REQUEST);
+							startActivityForResult(intent, TAKE_VIDEO_REQUEST);
 						}
-						
+
 						return true;
 					}
 				}
@@ -139,7 +145,7 @@ public class MainActivity extends Activity
 
 		return gestureDetector;
 	}
-	
+
 	/*
 	 * Send generic motion events to the gesture detector
 	 */
@@ -167,7 +173,7 @@ public class MainActivity extends Activity
 			String picturePath = data.getStringExtra(CameraManager.EXTRA_PICTURE_FILE_PATH);
 			processPictureWhenReady(picturePath);
 		}
-		
+
 		// Handle videos
 		if (requestCode == TAKE_VIDEO_REQUEST && resultCode == RESULT_OK) 
 		{
@@ -235,7 +241,7 @@ public class MainActivity extends Activity
 			observer.startWatching();
 		}
 	}
-	
+
 	/**
 	 * Added but irrelevant
 	 */
@@ -246,16 +252,16 @@ public class MainActivity extends Activity
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) 
 	{
-	    if (keyCode == KeyEvent.KEYCODE_CAMERA) 
-	    {
-	        // Stop the preview and release the camera.
-	        // Execute your logic as quickly as possible
-	        // so the capture happens quickly.
-	        return false;
-	    } 
-	    else 
-	    {
-	        return super.onKeyDown(keyCode, event);
-	    }
+		if (keyCode == KeyEvent.KEYCODE_CAMERA) 
+		{
+			// Stop the preview and release the camera.
+			// Execute your logic as quickly as possible
+			// so the capture happens quickly.
+			return false;
+		} 
+		else 
+		{
+			return super.onKeyDown(keyCode, event);
+		}
 	}
 }

@@ -1,7 +1,7 @@
 Glass Preview
 ===========
 
-This application is exmaple of how to use the camera on the Google Glass using the "hotfix" for the post-XE11 update.
+This application is an example of how to use the camera on the Google Glass using the "hotfix" for the post-XE11 update.
 
 
 License

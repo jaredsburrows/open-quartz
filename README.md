@@ -17,11 +17,13 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - Basic "HelloWorld"
    - [Voice Example](../master/example-apps/Voice Example) - *Andre Compagno*
      - Voice Recognition Example
+   - [Camera](../master/example-apps/Camera) - *Jared Burrows*)
+     - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
  - Misc
    - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
-     - "Hotfix" for Google Glass camera preview - post-XE10
+     - "Hotfix" for Google Glass camera preview - post-XE11
    - [Face Detection](../master/example-apps/FaceDetection) - *Jared Burrows*
-     - "Hotfix" for Google Glass camera preview - post-XE10
+     - "Hotfix" for Google Glass camera preview - post-XE11
 
 
 <a name="glass-source"/>
@@ -74,7 +76,7 @@ Here are helpful applications to install on your Glass in order to start testing
  - Android Screen Monitor
    - https://code.google.com/p/android-screen-monitor/
 
-### Basic ADB Usage(From Terminal or CMD Prompt):
+### Basic ADB Usage(For Terminal or CMD Prompt):
 Since there is no "Google Play" for the Glass yet, we have to side load Android applications for now. 
  - Installing/Uninstall Applications(.apks):
    - adb install -r FILE.apk

@@ -17,13 +17,16 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - Basic "HelloWorld"
    - [Voice Example](../master/example-apps/Voice Example) - *Andre Compagno*
      - Voice Recognition Example
-   - [Camera](../master/example-apps/Camera) - *Jared Burrows*)
+   - [Camera](../master/example-apps/Camera) - *Jared Burrows*
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
+   - [Memo App](../master/example-apps) - *Andre Compagno*
+     - Voice Memo Application
  - Misc
    - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
    - [Face Detection](../master/example-apps/FaceDetection) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
+     - Optimization coming soon
 
 
 <a name="glass-source"/>

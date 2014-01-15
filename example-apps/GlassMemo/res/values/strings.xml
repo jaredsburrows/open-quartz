@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	OpenQuartz Memo for Glass 
+	Github - https://github.com/jaredsburrows/OpenQuartz
+	@author Andre Compagno
+	
+	Copyright (C) 2013 OpenQuartz
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <!-- App Name -->
+    <string name="app_name">Memo for Glass</string>
+    <!-- Used as the voice trigger to launch the app -->
+    <string name="memo">memo</string>
+    <!-- Placeholder text for the text in the live card -->
+    <string name="hello_world">Your memos</string>
+    <!-- Used in the menu for the live card. Launches into the CardScrollView -->
+    <string name="view_memos">View memos</string>
+    <!-- Used in the menus -->
+    <string name="close">Close</string>
+    <!-- Key to get the memos in shared preferences -->
+    <string name="shared_memo_key">memo</string>
+    <!-- Used in the menu for the cards in the CardScrollView -->
+    <string name="delete_memo">Delete memo</string>
+    <string name="read_aloud">Read aloud</string>
+
+    <string-array name="string_array_name">
+        <item>text_string1</item>
+        <item>text_string2</item>
+        <item>text_string3</item>
+        <item>text_string4</item>
+    </string-array>
+
+</resources>

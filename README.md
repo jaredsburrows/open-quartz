@@ -19,9 +19,9 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - Voice Recognition Example
    - [Camera](../master/example-apps/Camera) - *Jared Burrows*
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
-   - [Memo App](../master/example-apps) - *Andre Compagno*
+   - [Memo App](../master/example-apps/GlassMemo) - *Andre Compagno*
      - Voice Memo Application
- - Misc
+ - OpenCV
    - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
    - [Face Detection](../master/example-apps/FaceDetection) - *Jared Burrows*
@@ -72,7 +72,9 @@ Here are helpful applications to install on your Glass in order to start testing
    - https://github.com/kaze0/launchy
  - OpenCV for Android
    - https://play.google.com/store/apps/details?id=org.opencv.engine
- - Settings
+ - Settings(Settings.apk)
+ - Settings for Glass(Setttings_Full.apk)
+   - http://forum.xda-developers.com/showthread.php?t=2576224
  - Terminal Emulator
    - https://play.google.com/store/apps/details?id=jackpal.androidterm 
 - Helpful Tools
@@ -81,6 +83,11 @@ Here are helpful applications to install on your Glass in order to start testing
 
 ### Basic ADB Usage(For Terminal or CMD Prompt):
 Since there is no "Google Play" for the Glass yet, we have to side load Android applications for now. 
+
+ - Keep Your Google Glass On while charging/developing:
+   - adb shell svc power stayon true | false | usb | ac
+ - Turn off Wifi and only use Bluetooth
+   - adb shell svc wifi enalble | disable
  - Installing/Uninstall Applications(.apks):
    - adb install -r FILE.apk
    - adb uninstall FILE.apk
@@ -153,13 +160,20 @@ Read more:
    - https://developers.google.com/glass/downloads/system
 
 
+<a name="license"/>
 License
-========
+=========
 
-Copyright (C) 2013 OpenQuartz
+    Copyright (C) 2014 OpenQuartz
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
- 
-  http://www.apache.org/licenses/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.

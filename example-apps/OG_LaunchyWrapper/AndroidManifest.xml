@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.openquartz.launchywrapper"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+
+        <!--
+         Glass App's "Main Activity" is here 
+         android:exported="true" in order to launch with voice from Glass Home
+        -->
+        <service
+            android:name="com.openquartz.launchywrapper.LaunchyWrapper"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name" >
+
+            <!-- Voice activated from the "OK, Glass" menu -->
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <!--
+             Add's menu option to the "OK, Glass" menu
+             Usage: Say OK, Glass, then say "Trigger String"
+            -->
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/launch" />
+        </service>
+    </application>
+
+</manifest>

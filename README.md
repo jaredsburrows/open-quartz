@@ -87,7 +87,7 @@ Since there is no "Google Play" for the Glass yet, we have to side load Android 
  - Keep Your Google Glass On while charging/developing:
    - adb shell svc power stayon true | false | usb | ac
  - Turn off Wifi and only use Bluetooth
-   - adb shell svc wifi enalble | disable
+   - adb shell svc wifi enable | disable
  - Installing/Uninstall Applications(.apks):
    - adb install -r FILE.apk
    - adb uninstall FILE.apk

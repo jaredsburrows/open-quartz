@@ -17,16 +17,21 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - Basic "HelloWorld"
    - [Voice Example](../master/example-apps/Voice Example) - *Andre Compagno*
      - Voice Recognition Example
-   - [Camera](../master/example-apps/Camera) - *Jared Burrows*
+   - [Camera App](../master/example-apps/OG_Camera) - *Jared Burrows*
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
    - [Memo App](../master/example-apps/GlassMemo) - *Andre Compagno*
      - Voice Memo Application
  - OpenCV
-   - [Glass Preview](../master/example-apps/GlassPreview) - *Jared Burrows*
-     - "Hotfix" for Google Glass camera preview - post-XE11
    - [Face Detection](../master/example-apps/FaceDetection) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
      - Optimization coming soon
+   - [Image Manipulation](../master/example-apps/OG_OCV_Image_Manipulation) - *Jared Burrows*
+     - Canny, Sobel, RGBA, Gray
+ - Misc
+   - [Glass Preview](../master/example-apps/OG_CameraPreview) - *Jared Burrows*
+     - "Hotfix" for Google Glass camera preview - post-XE11
+   - [Launchy Launcher](../master/example-apps/OG_LaunchyWrapper) - *Jared Burrows*
+     - Sometimes Launchy will not open up after the XE-12, this launches Launchy directly
 
 
 <a name="glass-source"/>

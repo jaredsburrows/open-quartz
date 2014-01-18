@@ -17,7 +17,7 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - Basic "HelloWorld"
    - [Voice Example](../master/example-apps/Voice Example) - *Andre Compagno*
      - Voice Recognition Example
-   - [Camera App](../master/example-apps/OG_Camera) - *Jared Burrows*
+   - [Camera App](../master/example-apps/OG_CameraApp) - *Jared Burrows*
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
    - [Memo App](../master/example-apps/GlassMemo) - *Andre Compagno*
      - Voice Memo Application

@@ -15,15 +15,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements CvCameraViewListener2, OnGestureListener {
-	private static final String TAG = "OCVSample::Activity";
+public class MainActivity extends Activity implements CvCameraViewListener2, OnGestureListener 
+{	
+	/** Constants **/
+	private static final String    TAG = "OpenQuartz::MainActivity";
 	public static final int      VIEW_MODE_RGBA      = 0;
 	public static final int      VIEW_MODE_HIST      = 1;
 	public static final int      VIEW_MODE_CANNY     = 2;
@@ -33,124 +33,127 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 	public static final int      VIEW_MODE_PIXELIZE  = 6;
 	public static final int      VIEW_MODE_POSTERIZE = 7;
 	public static final int 	 VIEW_MODE_GRAY 	 = 8;
-
-	private MenuItem             mItemPreviewRGBA;
-	private MenuItem             mItemPreviewHist;
-	private MenuItem             mItemPreviewCanny;
-	private MenuItem             mItemPreviewSepia;
-	private MenuItem             mItemPreviewSobel;
-	private MenuItem             mItemPreviewZoom;
-	private MenuItem             mItemPreviewPixelize;
-	private MenuItem             mItemPreviewPosterize;
-	private OGView 		 mOpenCvCameraView;
-
+	public static final int 	 VIEW_MODE_FEATURES  = 9;
 	public static int            viewMode = VIEW_MODE_RGBA;
+	public static final String VIEWS[] = { "RGBA", "HIST", "CANNY", 
+		"SEPIA", "SOBEL", "ZOOM", "PIXELIZE", "POSTERIZE", "GRAY", "FEATRURES" };
 
+	/** OpenCV View **/
+	private OGView 		 		 mOpenCvCameraView;
+
+	/** Gestures for Glass **/
 	private GestureDetector 	 mGestureDetector;
+	
+	/** Native Interface for OpenCV JNI **/
+	public native void FindFeatures(long matAddrGr, long matAddrRgba);
+
+	/** Mats **/
 	private Mat 				 mRgba;
 	private Mat 				 mGray;
 	private Mat                  mIntermediateMat;
 	private Size                 mSize0;
 
-
-	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
+	/** Callback for loading OpenCV **/
+	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) 
+	{
+		/*
+		 * (non-Javadoc)
+		 * @see org.opencv.android.BaseLoaderCallback#onManagerConnected(int)
+		 */
 		@Override
-		public void onManagerConnected(int status) {
-			switch (status) {
+		public void onManagerConnected(int status) 
+		{
+			switch (status) 
+			{
 			case LoaderCallbackInterface.SUCCESS:
-			{
 				Log.i(TAG, "OpenCV loaded successfully");
+
+				/** Native JNI Library **/
+				System.loadLibrary("mixed_sample");
+
 				mOpenCvCameraView.enableView();
-			} break;
+				break;
+
 			default:
-			{
 				super.onManagerConnected(status);
-			} break;
+				break;
 			}
 		}
 	};
 
-	public MainActivity() {
-		Log.i(TAG, "Instantiated new " + this.getClass());
-	}
-
-	/** Called when the activity is first created. */
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		Log.i(TAG, "called onCreate");
+	public void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-		setContentView(R.layout.surface_view);
+		this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+		this.setContentView(R.layout.surface_view);
+
+		/** View for OpenCV **/
 		mOpenCvCameraView = (OGView) findViewById(R.id.tutorial3_activity_java_surface_view);
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);
-		this.mGestureDetector = new GestureDetector(this, this);
 
+		/** Gesture for Glass **/
+		this.mGestureDetector = new GestureDetector(this, this);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
 	@Override
 	public void onPause()
 	{
 		super.onPause();
+
 		if (mOpenCvCameraView != null)
+		{
 			mOpenCvCameraView.disableView();
+		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	public void onResume()
 	{
 		super.onResume();
+
 		OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_6, this, mLoaderCallback);
 	}
 
-	public void onDestroy() {
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onDestroy()
+	 */
+	@Override
+	public void onDestroy() 
+	{
 		super.onDestroy();
+
 		if (mOpenCvCameraView != null)
+		{
 			mOpenCvCameraView.disableView();
+		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.i(TAG, "called onCreateOptionsMenu");
-		mItemPreviewRGBA  = menu.add("Preview RGBA");
-		mItemPreviewHist  = menu.add("Histograms");
-		mItemPreviewCanny = menu.add("Canny");
-		mItemPreviewSepia = menu.add("Sepia");
-		mItemPreviewSobel = menu.add("Sobel");
-		mItemPreviewZoom  = menu.add("Zoom");
-		mItemPreviewPixelize  = menu.add("Pixelize");
-		mItemPreviewPosterize = menu.add("Posterize");
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.i(TAG, "called onOptionsItemSelected; selected item: " + item);
-		if (item == mItemPreviewRGBA)
-			viewMode = VIEW_MODE_RGBA;
-		if (item == mItemPreviewHist)
-			viewMode = VIEW_MODE_HIST;
-		else if (item == mItemPreviewCanny)
-			viewMode = VIEW_MODE_CANNY;
-		else if (item == mItemPreviewSepia)
-			viewMode = VIEW_MODE_SEPIA;
-		else if (item == mItemPreviewSobel)
-			viewMode = VIEW_MODE_SOBEL;
-		else if (item == mItemPreviewZoom)
-			viewMode = VIEW_MODE_ZOOM;
-		else if (item == mItemPreviewPixelize)
-			viewMode = VIEW_MODE_PIXELIZE;
-		else if (item == mItemPreviewPosterize)
-			viewMode = VIEW_MODE_POSTERIZE;
-		return true;
-	}
-
-	public void onCameraViewStarted(int width, int height) {
-		mGray = new Mat();
-		mRgba = new Mat();
-		mIntermediateMat = new Mat();
+	/*
+	 * (non-Javadoc)
+	 * @see org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2#onCameraViewStarted(int, int)
+	 */
+	public void onCameraViewStarted(int width, int height) 
+	{
+		mGray = new Mat(height, width, CvType.CV_8UC4);
+		mRgba = new Mat(height, width, CvType.CV_8UC4);
+		mIntermediateMat = new Mat(height, width, CvType.CV_8UC4);
 		mSize0 = new Size();
 
 		//		mResolutionList = mOpenCvCameraView.getResolutionList();
@@ -160,19 +163,38 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 		//		}
 	}
 
-	public void onCameraViewStopped() {
+	/*
+	 * (non-Javadoc)
+	 * @see org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2#onCameraViewStopped()
+	 */
+	public void onCameraViewStopped() 
+	{
 		if (this.mRgba != null)
+		{
 			this.mRgba.release();
+		}
+
 		if (this.mGray != null)
+		{
 			this.mGray.release();
+		}
+
 		if (this.mIntermediateMat != null)
+		{
 			this.mIntermediateMat.release();
+		}
+
 		this.mRgba = null;
 		this.mGray = null;
 		this.mIntermediateMat = null;
 	}
 
-	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+	/*
+	 * (non-Javadoc)
+	 * @see org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2#onCameraFrame(org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame)
+	 */
+	public Mat onCameraFrame(CvCameraViewFrame inputFrame) 
+	{
 		mRgba = inputFrame.rgba();
 		mGray = inputFrame.gray();
 
@@ -181,7 +203,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 		case MainActivity.VIEW_MODE_RGBA:
 			return this.mRgba;
 
-			//			case Tutorial3Activity.VIEW_MODE_HIST:
+		case MainActivity.VIEW_MODE_HIST:
+			return this.mRgba;
+
 		case MainActivity.VIEW_MODE_CANNY:
 			Imgproc.Canny(this.mGray, mIntermediateMat, 80, 100);
 			Imgproc.cvtColor(mIntermediateMat, this.mGray, Imgproc.COLOR_GRAY2BGRA, 4);
@@ -200,6 +224,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 
 		case MainActivity.VIEW_MODE_GRAY:
 			return this.mGray;
+
+		case MainActivity.VIEW_MODE_FEATURES:
+			FindFeatures(mGray.getNativeObjAddr(), mRgba.getNativeObjAddr());
+			return this.mRgba;
 
 		default:
 			return this.mRgba;
@@ -224,7 +252,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 		return true;
 	}
 
-	/** phone tap **/
+	/** Phone Tap **/
 	/*
 	 * (non-Javadoc)
 	 * @see android.app.Activity#onTouchEvent(android.view.MotionEvent)
@@ -250,10 +278,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 	 * @see android.view.GestureDetector.OnGestureListener#onShowPress(android.view.MotionEvent)
 	 */
 	@Override
-	public void onShowPress(MotionEvent e) 
-	{
-
-	}
+	public void onShowPress(MotionEvent e) { }
 
 	/*
 	 * (non-Javadoc)
@@ -264,16 +289,16 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 	{
 		viewMode++;
 
-		if (viewMode >= 9)
+		if (viewMode == VIEWS.length)
 		{
 			viewMode = 0;
 		}
 		else if (viewMode <= 0)
 		{
-			viewMode = 8;
+			viewMode = VIEWS.length - 1;
 		}
 
-		Toast.makeText(getApplicationContext(), "Mode: " + viewMode , Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Mode: " + VIEWS[viewMode] , Toast.LENGTH_SHORT).show();
 
 		return false;
 	}
@@ -293,10 +318,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 	 * @see android.view.GestureDetector.OnGestureListener#onLongPress(android.view.MotionEvent)
 	 */
 	@Override
-	public void onLongPress(MotionEvent e) 
-	{
-
-	}
+	public void onLongPress(MotionEvent e) { }
 
 	@Override
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) 
@@ -310,16 +332,16 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnG
 			viewMode--;
 		}
 
-		if (viewMode >= 9)
+		if (viewMode == VIEWS.length)
 		{
 			viewMode = 0;
 		}
 		else if (viewMode <= 0)
 		{
-			viewMode = 8;
+			viewMode = VIEWS.length - 1;
 		}
 
-		Toast.makeText(getApplicationContext(), "Mode: " + viewMode , Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Mode: " + VIEWS[viewMode], Toast.LENGTH_SHORT).show();
 
 		return false;
 	}

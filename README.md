@@ -25,8 +25,8 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
    - [Face Detection](../master/example-apps/OG_OCV_FaceDetection) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
      - Optimization coming soon
-   - [Image Manipulation](../master/example-apps/OG_OCV_Image_Manipulation) - *Jared Burrows*
-     - Canny, Sobel, RGBA, Gray
+   - [Image Manipulation](../master/example-apps/OG_OCV_Image_Manipulation)(Mixed Processing and Camera Control Tutorials) - *Jared Burrows*
+     - Canny, Sobel, RGBA, Gray, FindFeatures
  - Misc
    - [Glass Preview](../master/example-apps/OG_CameraPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11

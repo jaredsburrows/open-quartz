@@ -12,50 +12,57 @@ import android.hardware.Camera.Size;
 import android.util.AttributeSet;
 import android.util.Log;
 
-public class OGView extends JavaCameraView implements PictureCallback {
-
-	private static final String TAG = "Sample::Tutorial3View";
+public class OGView extends JavaCameraView implements PictureCallback 
+{
 	private String mPictureFileName;
 
-	public OGView(Context context, AttributeSet attrs) {
+	public OGView(Context context, AttributeSet attrs) 
+	{
 		super(context, attrs);
 	}
 
-	public List<String> getEffectList() {
+	public List<String> getEffectList() 
+	{
 		return mCamera.getParameters().getSupportedColorEffects();
 	}
 
-	public boolean isEffectSupported() {
+	public boolean isEffectSupported() 
+	{
 		return (mCamera.getParameters().getColorEffect() != null);
 	}
 
-	public String getEffect() {
+	public String getEffect() 
+	{
 		return mCamera.getParameters().getColorEffect();
 	}
 
-	public void setEffect(String effect) {
+	public void setEffect(String effect) 
+	{
 		Camera.Parameters params = mCamera.getParameters();
 		params.setColorEffect(effect);
 		mCamera.setParameters(params);
 	}
 
-	public List<Size> getResolutionList() {
+	public List<Size> getResolutionList() 
+	{
 		return mCamera.getParameters().getSupportedPreviewSizes();
 	}
 
-	public void setResolution(Size resolution) {
+	public void setResolution(Size resolution) 
+	{
 		disconnectCamera();
 		mMaxHeight = resolution.height;
 		mMaxWidth = resolution.width;
 		connectCamera(getWidth(), getHeight());
 	}
 
-	public Size getResolution() {
+	public Size getResolution() 
+	{
 		return mCamera.getParameters().getPreviewSize();
 	}
 
-	public void takePicture(final String fileName) {
-		Log.i(TAG, "Taking picture");
+	public void takePicture(final String fileName) 
+	{
 		this.mPictureFileName = fileName;
 		// Postview and jpeg are sent in the same buffers if the queue is not empty when performing a capture.
 		// Clear up buffers to avoid mCamera.takePicture to be stuck because of a memory issue
@@ -65,35 +72,52 @@ public class OGView extends JavaCameraView implements PictureCallback {
 		mCamera.takePicture(null, null, this);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.hardware.Camera.PictureCallback#onPictureTaken(byte[], android.hardware.Camera)
+	 */
 	@Override
-	public void onPictureTaken(byte[] data, Camera camera) {
-		Log.i(TAG, "Saving a bitmap to file");
+	public void onPictureTaken(byte[] data, Camera camera) 
+	{
 		// The camera preview was automatically stopped. Start it again.
 		mCamera.startPreview();
 		mCamera.setPreviewCallback(this);
 
 		// Write the image in a file (in jpeg format)
-		try {
+		try 
+		{
 			FileOutputStream fos = new FileOutputStream(mPictureFileName);
 
 			fos.write(data);
 			fos.close();
 
-		} catch (java.io.IOException e) {
+		} 
+		catch (java.io.IOException e)
+		{
 			Log.e("PictureDemo", "Exception in photoCallback", e);
 		}
-
 	}
 
-	protected boolean initializeCamera(int width, int height) {
+	/*
+	 * (non-Javadoc)
+	 * @see org.opencv.android.JavaCameraView#initializeCamera(int, int)
+	 */
+	protected boolean initializeCamera(int width, int height) 
+	{
 		super.initializeCamera(width, height);
+
 		cameraFix();
+
 		return true;
 	}
 
-	public void cameraFix() {
-		Camera.Parameters params = mCamera.getParameters();
-		params.setPreviewFpsRange(30000, 30000);
-		mCamera.setParameters(params);		
+	private void cameraFix() 
+	{
+		if (mCamera != null)
+		{
+			Camera.Parameters params = mCamera.getParameters();
+			params.setPreviewFpsRange(30000, 30000);
+			mCamera.setParameters(params);		
+		}
 	}
 }

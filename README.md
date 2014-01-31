@@ -9,6 +9,7 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
  - [Example Applications](#example-apps)  
  - [Google Glass Application Sources](#glass-source)  
  - [Third Party Applications](#third-party)  
+ - [External Links](#external-links)  
 
 <a name="example-apps"/>
 ### Example Applications for Google Glass([/example-apps](../master/example-apps))
@@ -26,7 +27,7 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - "Hotfix" for Google Glass camera preview - post-XE11
      - Optimization coming soon
    - [Image Manipulation](../master/example-apps/OG_OCV_Image_Manipulation)(Mixed Processing and Camera Control Tutorials) - *Jared Burrows*
-     - Canny, Sobel, RGBA, Gray, FindFeatures
+     - Canny, Sobel, RGBA, Gray, Feature Detection, etc
  - Misc
    - [Glass Preview](../master/example-apps/OG_CameraPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
@@ -148,6 +149,7 @@ Read more:
    - OpenCV(OpenCV for Android)
      - http://opencv.org/platforms/android.html
 
+<a name="external-links"/>
 ### Google Glass Resources:
  - Overview
    - https://developers.google.com/glass/
@@ -163,7 +165,8 @@ Read more:
    - https://github.com/googleglass
  - Boot Images and Kernels
    - https://developers.google.com/glass/downloads/system
-
+ - Glass-Apps: Developers, Blogs and News
+   - http://glass-apps.org/
 
 <a name="license"/>
 License

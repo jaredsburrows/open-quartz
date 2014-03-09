@@ -1,4 +1,4 @@
-OpenQuartz
+OpenQuartz - Updated(3/9/14)
 =========
 
 **Open Source Google Glass Development**
@@ -22,6 +22,8 @@ Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main in
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
    - [Memo App](../master/example-apps/GlassMemo) - *Andre Compagno*
      - Voice Memo Application
+   - [Location Example](../master/example-apps/OG_Location) - *Jared Burrows*
+     - Basic Location on Live Cards
  - OpenCV
    - [Face Detection](../master/example-apps/OG_OCV_FaceDetection) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11

@@ -28,8 +28,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.openquartz.helloglass.R;
-
 
 public class MenuActivity extends Activity 
 {

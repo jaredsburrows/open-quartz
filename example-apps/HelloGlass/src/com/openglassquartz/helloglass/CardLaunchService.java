@@ -29,8 +29,6 @@ import android.widget.RemoteViews;
 
 import com.google.android.glass.timeline.LiveCard;
 import com.google.android.glass.timeline.TimelineManager;
-import com.openquartz.helloglass.R;
-
 
 
 public class CardLaunchService extends Service 

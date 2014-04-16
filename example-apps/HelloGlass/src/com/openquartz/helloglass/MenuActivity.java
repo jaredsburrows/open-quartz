@@ -19,7 +19,7 @@
  */
 
 
-package com.openglassquartz.helloglass;
+package com.openquartz.helloglass;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -33,44 +33,56 @@ import com.openquartz.helloglass.R;
 
 public class MenuActivity extends Activity 
 {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+	}
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) 
-    {
-        super.onCreate(savedInstanceState);
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) 
+	{
+		super.onCreateOptionsMenu(menu);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_menu, menu);
+		return true;
+	}
 
-    @Override
-    public void onResume() 
-    {
-        super.onResume();
-        openOptionsMenu();
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		switch (item.getItemId()) 
+		{
+		case R.id.close:
+			stopService(new Intent(this, CardLaunchService.class));
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) 
-    {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
+	@Override
+	public void onAttachedToWindow() 
+	{
+		super.onAttachedToWindow();
+		openOptionsMenu();
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) 
-    {
-        switch (item.getItemId()) 
-        {
-            case R.id.close:
-                stopService(new Intent(this, CardLaunchService.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+	@Override
+	public void onDetachedFromWindow() 
+	{
+		super.onDetachedFromWindow();
+	}
 
-    @Override
-    public void onOptionsMenuClosed(Menu menu) 
-    {
-        finish();
-    }
+	@Override
+	public void openOptionsMenu() 
+	{
+		super.openOptionsMenu();
+	}
+
+	@Override
+	public void onOptionsMenuClosed(Menu menu) 
+	{
+		finish();
+	}
 }

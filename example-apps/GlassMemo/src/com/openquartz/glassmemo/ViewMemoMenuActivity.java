@@ -38,13 +38,24 @@ public class ViewMemoMenuActivity extends Activity
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void onResume() 
-    {
-        super.onResume();
-        openOptionsMenu();
-    }
+	@Override
+	public void onAttachedToWindow() 
+	{
+		super.onAttachedToWindow();
+		openOptionsMenu();
+	}
 
+	@Override
+	public void onDetachedFromWindow() 
+	{
+		super.onDetachedFromWindow();
+	}
+
+	@Override
+	public void openOptionsMenu() 
+	{
+		super.openOptionsMenu();
+	}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {

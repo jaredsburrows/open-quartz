@@ -38,17 +38,7 @@ class MemoScrollAdapter extends CardScrollAdapter
 		this.mCards = cards;
 	}
 	
-	@Override
-	public int findIdPosition(Object id) 
-	{
-		return -1;
-	}
 
-	@Override
-	public int findItemPosition(Object item) 
-	{
-		return mCards.indexOf(item);
-	}
 
 	@Override
 	public int getCount() 
@@ -65,7 +55,7 @@ class MemoScrollAdapter extends CardScrollAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) 
 	{
-		return mCards.get(position).toView();
+		return mCards.get(position).getView();
 	} 
 	
 	//Remove a memo from the card scroll 
@@ -82,5 +72,11 @@ class MemoScrollAdapter extends CardScrollAdapter
 		{
 			mCards.get(i).setFootnote("Memo " + (i+1) + " of " +  mCards.size());
 		}
+	}
+
+	@Override
+	public int getPosition(Object arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

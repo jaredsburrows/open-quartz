@@ -29,18 +29,15 @@ import android.speech.RecognizerIntent;
 import android.widget.RemoteViews;
 
 import com.google.android.glass.timeline.LiveCard;
-import com.google.android.glass.timeline.TimelineManager;
 
 public class CardLaunchService extends Service 
 {
-	private TimelineManager mTimelineManager;
 	private LiveCard mLiveCard;
 	private String cardID = "VoiceLiveCard";
 
 	@Override
 	public void onCreate() 
 	{
-		mTimelineManager = TimelineManager.from(this);
 		super.onCreate();
 	}
 
@@ -52,7 +49,8 @@ public class CardLaunchService extends Service
 		if (mLiveCard == null)
 		{
 			//create live card *New in XE12 createLiveCard replaced getLiveCard from XE11*
-			mLiveCard = mTimelineManager.createLiveCard(cardID);
+			//TimelineManager removed. Use LiveCard constructor to create LiveCards
+			mLiveCard = new LiveCard(this , cardID);
 		}
 		//Create the remote views from the layout
 		RemoteViews remoteViews = new RemoteViews(this.getPackageName(),R.layout.card_layout);

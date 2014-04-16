@@ -50,12 +50,23 @@ public class MemoScrollMenuActivity extends Activity
 	}
 
 	@Override
-	public void onResume() 
+	public void onAttachedToWindow() 
 	{
-		super.onResume();
+		super.onAttachedToWindow();
 		openOptionsMenu();
 	}
 
+	@Override
+	public void onDetachedFromWindow() 
+	{
+		super.onDetachedFromWindow();
+	}
+
+	@Override
+	public void openOptionsMenu() 
+	{
+		super.openOptionsMenu();
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
 	{

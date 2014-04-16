@@ -19,7 +19,7 @@
  */
 
 
-package com.openglassquartz.helloglass;
+package com.openquartz.helloglass;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -28,14 +28,11 @@ import android.os.IBinder;
 import android.widget.RemoteViews;
 
 import com.google.android.glass.timeline.LiveCard;
-import com.google.android.glass.timeline.TimelineManager;
-import com.openquartz.helloglass.R;
 
 
 
 public class CardLaunchService extends Service 
 {
-	private TimelineManager mTimelineManager;
 	private LiveCard mLiveCard;
 	private String cardID = "HelloGlassLiveCard";
 
@@ -43,7 +40,6 @@ public class CardLaunchService extends Service
 	public void onCreate() 
 	{
 		super.onCreate();
-		mTimelineManager = TimelineManager.from(this);
 	}
 
 	//Sets what happens when the service is launced, here we push the card to the Timeline
@@ -54,7 +50,8 @@ public class CardLaunchService extends Service
 		if (mLiveCard == null)
 		{
 			//create live card *New in XE12 createLiveCard replaced getLiveCard from XE11*
-			mLiveCard = mTimelineManager.createLiveCard(cardID);
+			//TimelineManager removed in XE16. Use LiveCard constructor now
+			mLiveCard = new LiveCard(this , cardID);
 			
 			//set the views of the card from a xml file 
 			mLiveCard.setViews(new RemoteViews(this.getPackageName(),R.layout.card_layout));
@@ -70,7 +67,8 @@ public class CardLaunchService extends Service
 		//Live card is already published 
 		else 
 		{
-			//Jumping to the card not implemented in the gdk yet
+			//Jumping to the card added in XE16
+			mLiveCard.navigate();
 		}
 		return START_STICKY;
 	}

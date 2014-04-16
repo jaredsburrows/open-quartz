@@ -31,12 +31,11 @@ import android.os.IBinder;
 import android.widget.RemoteViews;
 
 import com.google.android.glass.timeline.LiveCard;
-import com.google.android.glass.timeline.TimelineManager;
+
 
 
 public class ViewMemoService extends Service 
 {
-	private TimelineManager mTimelineManager;
 	private LiveCard mLiveCard;
 	private String cardID = "MemoGlassLiveCard";
 	private String cardText = "";
@@ -46,15 +45,11 @@ public class ViewMemoService extends Service
 	public void onCreate() 
 	{
 		super.onCreate();
-		mTimelineManager = TimelineManager.from(this);
+		
 		if (Utils.checkForObjectInSharedPrefs(this,getString(R.string.shared_memo_key)))
-		{
 			memoList = new ArrayList<String>(Utils.getStringArrayPref(this, getString(R.string.shared_memo_key)));
-		}
 		else
-		{
 			memoList = new ArrayList<String>();
-		}
 
 	}
 
@@ -68,7 +63,8 @@ public class ViewMemoService extends Service
 		if (mLiveCard ==  null)
 		{
 			//create live card *New in XE12 createLiveCard replaced getLiveCard from XE11*
-			mLiveCard = mTimelineManager.createLiveCard(cardID);
+			//XE16 UPDATE TimelineMAnager class has been removed. In orde
+			mLiveCard = new LiveCard(this , cardID); //= mTimelineManager.createLiveCard(cardID);
 			RemoteViews remoteViews = new RemoteViews(this.getPackageName(),R.layout.card_layout);
 
 			//if there are memos
@@ -76,9 +72,7 @@ public class ViewMemoService extends Service
 			{
 				//build string with list 
 				for (int i = 0 ; i < memoList.size() && i < 5; i++)
-				{
 					cardText += "" + (i+1) + ") " + memoList.get(i) + "\n";
-				}
 				//set the text views 
 				remoteViews.setTextViewText(R.id.memo_list_text_view , cardText);
 				remoteViews.setTextViewText(R.id.no_memos_text_view, "");
@@ -97,33 +91,24 @@ public class ViewMemoService extends Service
 			Intent menu;
 			//if there are no memos
 			if (memoList.size() == 0)
-			{
 				menu = new Intent(this, ViewMemoMenuActivityNoMemos.class);
-			}
 			//if there are memos 
 			else 
-			{
 				menu = new Intent(this, ViewMemoMenuActivity.class);
-			}
 			mLiveCard.setAction(PendingIntent.getActivity(this, 0, menu, 0));
 
 			//publish the card to the timeline 
 			//Set publish mode to reveal *New in XE12 replaced setNonSilent method from XE11*
 			if (update)
-			{
 				mLiveCard.publish(LiveCard.PublishMode.SILENT);
-			}
 			else
-			{
 				mLiveCard.publish(LiveCard.PublishMode.REVEAL);
-			}
 		}
 		//Live card is already published 
 		else 
 		{
-			//Jumping to the card not implemented in the gdk yet so we unpublish it and republish it so the glass jumps to it 
-			mLiveCard.unpublish();
-			mLiveCard.publish(LiveCard.PublishMode.REVEAL);
+			//Jump to the live card. Implemented in XE16
+			mLiveCard.navigate();
 		}
 		return START_STICKY;
 	}
@@ -131,7 +116,7 @@ public class ViewMemoService extends Service
 	@Override
 	public void onDestroy() 
 	{
-		//remove the card from
+		//remove the card from timeline
 		if (mLiveCard != null && mLiveCard.isPublished()) 
 		{
 			mLiveCard.unpublish();

@@ -1,4 +1,4 @@
-OpenQuartz - Updated(3/9/14)
+OpenQuartz - Updated(4/26/14)
 =========
 
 **Open Source Google Glass Development**
@@ -6,10 +6,77 @@ OpenQuartz - Updated(3/9/14)
 Much like [quartz sand](http://en.wikipedia.org/wiki/Quartz_sand) is the main ingredient in most commercial glass, we want OpenQuartz to be the main "ingredient" in the future development for Google Glass
 
 ### Table of Contents  
+ - [Getting Started](#getting-started)
+   - New to Android? New to Glass? 
+   - [Official Examples](#getting-started)
+   - [Important Libraries](#libraries)
+   - [Important ADB Commands](#adb)
  - [Example Applications](#example-apps)  
- - [Google Glass Application Sources](#glass-source)  
+   - OpenQuartz Open Source Applications 
+ - [Google Glass Application Sources](#glass-source)
+   - Tools for decompiling applications
  - [Third Party Applications](#third-party)  
+   - Useful third party applications
  - [External Links](#external-links)  
+   - Official documentation and links for Google Glass as well as helpful links for developers 
+
+<a name="getting-started"/>
+### Google Glass Example GDK Applications:
+ - Compass
+   - https://www.github.com/googleglass/apk-compass-sample
+ - Level
+   - https://www.github.com/googleglass/apk-level-sample
+ - Stopwatch
+   - https://www.github.com/googleglass/apk-stopwatch-sample
+ - Waveform
+   - https://www.github.com/googleglass/apk-waveform-sample
+
+<a name="libraries"/>
+### Important Libraries:
+ - Google
+   - Android SDK
+     - http://developer.android.com/sdk/index.html
+   - Android NDK (Native Development Kit)
+     - http://developer.android.com/tools/sdk/ndk/index.html
+   - GDK (Glass Development Kit)
+     - https://developers.google.com/glass/develop/gdk/
+ - Misc
+   - OpenCV(OpenCV for Android)
+     - http://opencv.org/platforms/android.html
+
+<a name="adb"/>
+### Basic ADB Usage(For Terminal or CMD Prompt):
+Since there is no "Google Play" for the Glass yet, we have to side load Android applications for now. 
+
+ - Keep Your Google Glass On while charging/developing:
+   - adb shell svc power stayon true | false | usb | ac
+ - Turn off Wifi and only use Bluetooth
+   - adb shell svc wifi enable | disable
+ - Installing/Uninstall Applications(.apks):
+   - adb install -r FILE.apk
+   - adb uninstall FILE.apk
+ - Running the Application:
+   - adb shell am start -n PACKAGE.NAME/.MAIN.ACTIVITY.NAME
+ - List all Packages on your Android Device:
+   - adb shell pm list packages -f 
+ - List all Relative Information about your Android Device:
+   - adb shell dumpsys
+     - adb shell dumpsys battery
+     - adb shell dumpsys wifi
+     - adb shell dumpsys cpuinfo
+     - adb shell dumpsys meminfo
+       - adb shell dumpsys meminfo PACKAGE.NAME
+   - adb shell cat "/system/build.prop" | grep "product"
+ - Show the AndroidManifest for an APK
+   - aapt dump xmltree FILE.apk AndroidManifest.xml
+ - Screenshots from Commandline
+   - adb shell /system/bin/screencap -p /sdcard/screenshot.png
+   - adb pull /sdcard/screenshot.png screenshot.png
+
+Read more: 
+ - http://developer.android.com/tools/help/adb.html
+ - http://stackoverflow.com/questions/11201659/whats-android-adb-shell-dumpsys-tool-and-its-benefits
+
 
 <a name="example-apps"/>
 ### Example Applications for Google Glass([/example-apps](../master/example-apps))
@@ -89,67 +156,6 @@ Here are helpful applications to install on your Glass in order to start testing
  - Android Screen Monitor
    - https://code.google.com/p/android-screen-monitor/
 
-### Basic ADB Usage(For Terminal or CMD Prompt):
-Since there is no "Google Play" for the Glass yet, we have to side load Android applications for now. 
-
- - Keep Your Google Glass On while charging/developing:
-   - adb shell svc power stayon true | false | usb | ac
- - Turn off Wifi and only use Bluetooth
-   - adb shell svc wifi enable | disable
- - Installing/Uninstall Applications(.apks):
-   - adb install -r FILE.apk
-   - adb uninstall FILE.apk
- - Running the Application:
-   - adb shell am start -n PACKAGE.NAME/.MAIN.ACTIVITY.NAME
- - List all Packages on your Android Device:
-   - adb shell pm list packages -f 
- - List all Relative Information about your Android Device:
-   - adb shell dumpsys
-     - adb shell dumpsys battery
-     - adb shell dumpsys wifi
-     - adb shell dumpsys cpuinfo
-     - adb shell dumpsys meminfo
-       - adb shell dumpsys meminfo PACKAGE.NAME
-   - adb shell cat "/system/build.prop" | grep "product"
- - Show the AndroidManifest for an APK
-   - aapt dump xmltree FILE.apk AndroidManifest.xml
- - Screenshots from Commandline
-   - adb shell /system/bin/screencap -p /sdcard/screenshot.png
-   - adb pull /sdcard/screenshot.png screenshot.png
-
-Read more: 
- - http://developer.android.com/tools/help/adb.html
- - http://stackoverflow.com/questions/11201659/whats-android-adb-shell-dumpsys-tool-and-its-benefits
-
-### Current Open Source Projects:
- - Google Glass Playground
-   - https://github.com/space150/google-glass-playground
- - OpenShades: WearScript
-   - https://github.com/OpenShades/wearscript
- - Example of Decompiled Resources:
-   - https://github.com/zhuowei/Xenologer-src-glasshome
-
-### Pre-GDK Glass Applications:
- - Compass
-   - https://www.github.com/googleglass/apk-compass-sample
- - Level
-   - https://www.github.com/googleglass/apk-level-sample
- - Stopwatch
-   - https://www.github.com/googleglass/apk-stopwatch-sample
- - Waveform
-   - https://www.github.com/googleglass/apk-waveform-sample
-
-### Important Libraries:
- - Google
-   - Android SDK
-     - http://developer.android.com/sdk/index.html
-   - Android NDK (Native Development Kit)
-     - http://developer.android.com/tools/sdk/ndk/index.html
-   - GDK (Glass Development Kit)
-     - https://developers.google.com/glass/develop/gdk/
- - Misc
-   - OpenCV(OpenCV for Android)
-     - http://opencv.org/platforms/android.html
 
 <a name="external-links"/>
 ### Google Glass Resources:

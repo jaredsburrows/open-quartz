@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_stop"
+        android:title="@string/action_stop"
+        android:icon="@drawable/ic_stop" />
+</menu>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CameraPreview</string>
+    <string name="title_activity_live_card_service">Hello World LiveCard</string>
+    <string name="action_stop">Stop</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

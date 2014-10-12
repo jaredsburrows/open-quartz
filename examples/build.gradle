@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.2'
+        classpath 'com.android.tools.build:gradle:0.13.3'
     }
 }
 
@@ -20,11 +20,11 @@ subprojects {
 
     android {
         compileSdkVersion "Google Inc.:Glass Development Kit Preview:19"
-        buildToolsVersion "20.0.0"
+        buildToolsVersion "21.0.1"
 
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 20
+            targetSdkVersion 19
             versionCode 1
             versionName "1.0"
         }
@@ -42,3 +42,4 @@ subprojects {
         }
     }
 }
+

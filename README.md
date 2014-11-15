@@ -1,4 +1,4 @@
-OpenQuartz - Updated(8/31/14)
+OpenQuartz - Updated(10/11/14)
 =========
 
 **Open Source Google Glass Development**

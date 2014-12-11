@@ -1,4 +1,4 @@
-OpenQuartz - Updated(10/11/14)
+OpenQuartz
 =========
 
 **Open Source Google Glass Development**
@@ -81,35 +81,32 @@ Read more:
 <a name="example-apps"/>
 ### Example Applications for Google Glass([/example-apps](../master/example-apps))
  - GDK
-   - [Hello Glass](../master/example-apps/HelloGlass) - *Andre Compagno*
+   - [Hello Glass](../master/examples/HelloGlass) - *Andre Compagno*
      - Basic "HelloWorld"
-   - [Voice Example](../master/example-apps/Voice Example) - *Andre Compagno*
+   - [Voice Example](../master/examples/VoiceExample) - *Andre Compagno*
      - Voice Recognition Example
-   - [Camera App](../master/example-apps/OG_CameraApp) - *Jared Burrows*
+   - [Camera App](../master/examples/CameraApp) - *Jared Burrows*
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
-   - [Memo App](../master/example-apps/GlassMemo) - *Andre Compagno*
+   - [Memo App](../master/examples/GlassMemo) - *Andre Compagno*
      - Voice Memo Application
-   - [Location Example](../master/example-apps/OG_Location) - *Jared Burrows*
+   - [Location Example](../master/examples/Location) - *Jared Burrows*
      - Basic Location on Live Cards
  - OpenCV
-   - [Face Detection](../master/example-apps/OG_OCV_FaceDetection) - *Jared Burrows*
+   - [Face Detection](../master/examples/FaceDetection) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
      - Optimization coming soon
-   - [Image Manipulation](../master/example-apps/OG_OCV_Image_Manipulation)(Mixed Processing and Camera Control Tutorials) - *Jared Burrows*
+   - [Image Manipulation](../master/examples/ImageManipulation)(Mixed Processing and Camera Control Tutorials) - *Jared Burrows*
      - Canny, Sobel, RGBA, Gray, Feature Detection, etc
  - Misc
-   - [Glass Preview](../master/example-apps/OG_CameraPreview) - *Jared Burrows*
+   - [Glass Preview](../master/examples/CameraPreview) - *Jared Burrows*
      - "Hotfix" for Google Glass camera preview - post-XE11
-   - [Launchy Launcher](../master/example-apps/OG_LaunchyWrapper) - *Jared Burrows*
+   - [Launchy Launcher](../master/examples/LaunchyWrapper) - *Jared Burrows*
      - Sometimes Launchy will not open up after the XE-12, this launches Launchy directly
 
 
 <a name="glass-source"/>
 ### Google Glass Application Source Code([/glass-source](../master/glass-source)):
 
-**UPDATE(11/19/13): GDK is now out! You can still easily decompile applications using this method.**
-
-~~Since the GDK is not yet released, we can look around how the current Google Glass Android applications were compile by breaking them down. The decompiled Google Glass applications are included.~~ Here are a list of tools to decompile the native APKs:
  - Decompiling APKs 
    - Dex2Jar
      - https://code.google.com/p/dex2jar

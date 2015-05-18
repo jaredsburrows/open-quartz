@@ -1,0 +1,28 @@
+language: android
+
+jdk:
+ - oraclejdk8
+
+android:
+  components:
+    - build-tools-22.0.1
+    - android-22
+    - addon-google_gdk-google-19
+  licenses:
+    - '.+'
+
+script:
+ - ./gradlew clean assembleDebug -Dpre-dex=false --stacktrace
+
+branches:
+  except:
+    - gh-pages
+
+notifications:
+  email: false
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.gradle

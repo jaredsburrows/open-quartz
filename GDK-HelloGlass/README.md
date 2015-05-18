@@ -4,18 +4,18 @@ Hello Glass
 This application is a Hello World sample for Google Glass using the GDK.
 
 - The application publishes a card to the users timeline which displays the text "Hello Glass!"
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/HelloGlass/screenshot-hello-glass.png)
+![Screenshot](screenshot-hello-glass.png)
 
 - The application can be launched by using the "hello glass" voice command
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/HelloGlass/screenshot-voice-command.png)
+![Screenshot](screenshot-voice-command.png)
 
 - This application also shows how to add menu options to the card
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/HelloGlass/screenshot-close-action.png)
+![Screenshot](screenshot-close-action.png)
 
 License
 ========
 
-Copyright (C) 2014 OpenQuartz
+Copyright (C) 2015 OpenQuartz
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
  

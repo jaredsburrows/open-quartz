@@ -1,4 +1,6 @@
 rootProject.name = 'OpenQuartz'
 
+include ':GDK-CameraApp'
 include ':GDK-HelloGlass'
+include ':GDK-Location'
 include ':SDK-CameraPreview'

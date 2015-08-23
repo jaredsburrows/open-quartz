@@ -27,7 +27,7 @@ OpenQuartz [![Status](https://travis-ci.org/jaredsburrows/OpenQuartz.svg?branch=
  - Google
    - [Android Glass GDK](https://developers.google.com/glass/develop/gdk/)
    - [Android SDK](http://developer.android.com/sdk/index.html)
-   - [Android NDK](Native Development Kit)(http://developer.android.com/tools/sdk/ndk/index.html)
+   - [Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)
  - Misc
    - [OpenCV(OpenCV for Android)](http://opencv.org/platforms/android.html)
 
@@ -66,23 +66,23 @@ Read more:
 <a name="example-apps"/>
 ### Example Applications for Google Glass:
  - GDK
-   - [Camera App](GDK-CameraApp) - *Jared Burrows*
+   - [Camera App](gdk/camera-app)
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
-   - [Memo App](GDK-GlassMemo) - *Andre Compagno*
+   - [Memo App] - *Andre Compagno*
      - Voice Memo Application
-   - [Hello Glass](GDK-HelloGlass) - *Andre Compagno*
+   - [Hello Glass](gdk/hello-glass)
      - Basic "HelloWorld"
-   - [Location Example](GDK-Location) - *Jared Burrows*
+   - [Location Example](gdk/location)
      - Basic Location on Live Cards
-   - [Voice Example](GDK-VoiceExample) - *Andre Compagno*
+   - [Voice Example]
      - Voice Recognition Example
  - OpenCV or Android SDK
-   - [Glass Preview](SDK-CameraPreview) - *Jared Burrows*
+   - [Glass Preview](sdk/camera-preview)
      - "Hotfix" for Google Glass camera preview - post-XE11
-   - [Image Manipulation](SDK-ImageManipulation) - *Jared Burrows*
+   - [Image Manipulation]
      - Mixed Processing and Camera Control Tutorials
      - Canny, Sobel, RGBA, Gray, Feature Detection, etc
-   - [Face Detection](SDK-FaceDetection) - *Jared Burrows*
+   - [Face Detection]
      - "Hotfix" for Google Glass camera preview - post-XE11
      - Optimization coming soon
 

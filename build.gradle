@@ -1,12 +1,13 @@
 buildscript {
     repositories {
-//        mavenCentral()
         jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.9'
+        classpath 'com.android.tools.build:gradle:1.3.1'
+        classpath 'com.novoda:gradle-android-command-plugin:1.5.0'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
     }
 }
 
@@ -15,6 +16,7 @@ allprojects {
 
     repositories {
         jcenter()
+        mavenCentral()
     }
 
     tasks.withType(JavaCompile) {
@@ -35,18 +37,19 @@ allprojects {
     }
 }
 
-subprojects {
+configure(project(':gdk').subprojects) {
     apply plugin: 'com.android.application'
+    apply plugin: 'android-command'
 
     android {
         // Make sure we apply the correct tools
-        compileSdkVersion project.name.contains('GDK-') ? 'Google Inc.:Glass Development Kit Preview:19' : 22
-        buildToolsVersion '22.0.1'
+        compileSdkVersion 'Google Inc.:Glass Development Kit Preview:19'
+        buildToolsVersion '23.0.0'
 
         // Set 'applicationId' in AndroidManifest.xml
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 22
+            targetSdkVersion 23
             versionCode 1
             versionName '1.0'
         }
@@ -76,35 +79,49 @@ subprojects {
             abortOnError false
         }
     }
+}
 
-    // Running the APK on your Android Device - only works for SDK apps
-    android.applicationVariants.all { variant ->
-        if (variant.install) {
-            tasks.create(name: "run${variant.name.capitalize()}", type: Exec,
-                    dependsOn: variant.install) {
-                group = 'Run'
-                description "Installs and Runs the APK for ${variant.description}."
-                def getMainActivity = { file ->
-                    new XmlSlurper().parse(file).application.activity.find {
-                        it.'intent-filter'.find { filter ->
-                            return filter.action.find {
-                                it.'@android:name'.text() == 'android.intent.action.MAIN'
-                            } \
-                             && filter.category.find {
-                                it.'@android:name'.text() == 'android.intent.category.LAUNCHER'
-                            }
-                        }
-                    }.'@android:name'
-                }
-                doFirst {
-                    def activityClass =
-                            getMainActivity(variant.outputs.processManifest.manifestOutputFile)
-                    commandLine android.adbExe, 'shell', 'am', 'start', '-n',
-                            "${variant.applicationId}/${activityClass}"
+configure(project(':sdk').subprojects) {
+    apply plugin: 'com.android.application'
+    apply plugin: 'android-command'
 
-                    // or without the XML hacking: commandLine android.adbExe, 'shell', 'monkey', '-p', variant.applicationId, '1'
-                }
+    android {
+        // Make sure we apply the correct tools
+        compileSdkVersion 23
+        buildToolsVersion '23.0.0'
+        useLibrary 'org.apache.http.legacy'
+
+        // Set 'applicationId' in AndroidManifest.xml
+        defaultConfig {
+            minSdkVersion 19
+            targetSdkVersion 23
+            versionCode 1
+            versionName '1.0'
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+
+        signingConfigs {
+            debug {
+                storeFile rootProject.file('debug.keystore')
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
             }
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+
+        lintOptions {
+            abortOnError false
         }
     }
 }

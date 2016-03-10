@@ -1,4 +1,4 @@
-OpenQuartz [![Status](https://travis-ci.org/jaredsburrows/OpenQuartz.svg?branch=master)](https://travis-ci.org/jaredsburrows/OpenQuartz)
+OpenQuartz [![Status](https://travis-ci.org/jaredsburrows/open-quartz.svg?branch=master)](https://travis-ci.org/jaredsburrows/open-quartz)
 =========
 
 **Open Source Google Glass Development**

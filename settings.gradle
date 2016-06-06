@@ -1,6 +1,6 @@
-rootProject.name = 'openquartz'
+rootProject.name = "open-quartz"
 
-include ':gdk:camera-app'
-include ':gdk:hello-glass'
-include ':gdk:location'
-include ':sdk:camera-preview'
+include ":gdk:camera-app"
+include ":gdk:hello-glass"
+include ":gdk:location"
+include ":sdk:camera-preview"

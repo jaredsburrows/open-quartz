@@ -1,57 +1,75 @@
 buildscript {
     repositories {
-        jcenter()
-        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" } // Mirrors jcenter() and mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.1'
-        classpath 'com.novoda:gradle-android-command-plugin:1.5.0'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
+        // Android gradle plugin
+        classpath "com.android.tools.build:gradle:2.1.0"
+        // Android command plugin
+        classpath "com.novoda:gradle-android-command-plugin:1.5.0"
+        // Google error-prone
+        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.8"
+        // Dex method count
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.2"
+        // Check for plugin updates
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.12.0"
+        // Apk size
+        classpath "com.vanniktech:gradle-android-apk-size-plugin:0.2.0"
     }
 }
 
 allprojects {
-    apply plugin: 'com.github.ben-manes.versions'
+    apply plugin: "com.github.ben-manes.versions"
+    apply plugin: "net.ltgt.errorprone"
 
     repositories {
-        jcenter()
-        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" } // Mirrors jcenter() and mavenCentral()
     }
+
+    // https://github.com/tbroyer/gradle-errorprone-plugin/issues/18
+    configurations.all {
+        resolutionStrategy {
+            force "com.google.errorprone:error_prone_core:2.0.5"
+        }
+    }
+
 
     tasks.withType(JavaCompile) {
         sourceCompatibility = JavaVersion.VERSION_1_7
         targetCompatibility = JavaVersion.VERSION_1_7
 
         configure(options) {
-            compilerArgs << '-Xlint:all' << '-Xlint:-options'
+            compilerArgs << "-Xlint:all" << "-Xlint:-options"
             deprecation = true
-            encoding = 'UTF-8'
+            encoding = "UTF-8"
         }
     }
 
     tasks.withType(Test) {
         testLogging {
-            exceptionFormat 'full'
+            exceptionFormat "full"
         }
     }
 }
 
-configure(project(':gdk').subprojects) {
-    apply plugin: 'com.android.application'
-    apply plugin: 'android-command'
+configure(project(":gdk").subprojects) {
+    apply plugin: "com.android.application"
+    apply plugin: "android-command"
+    apply plugin: "com.getkeepsafe.dexcount"
+    apply plugin: "com.vanniktech.android.apk.size"
 
     android {
         // Make sure we apply the correct tools
-        compileSdkVersion 'Google Inc.:Glass Development Kit Preview:19'
-        buildToolsVersion '23.0.0'
+        compileSdkVersion "Google Inc.:Glass Development Kit Preview:19"
+        buildToolsVersion "23.0.3"
 
-        // Set 'applicationId' in AndroidManifest.xml
+        // Set "applicationId" in AndroidManifest.xml
         defaultConfig {
             minSdkVersion 19
             targetSdkVersion 23
             versionCode 1
-            versionName '1.0'
+            versionName "1.0"
         }
 
         compileOptions {
@@ -61,17 +79,17 @@ configure(project(':gdk').subprojects) {
 
         signingConfigs {
             debug {
-                storeFile rootProject.file('debug.keystore')
-                storePassword 'android'
-                keyAlias 'androiddebugkey'
-                keyPassword 'android'
+                storeFile rootProject.file("./.buildscript/debug.keystore")
+                storePassword "android"
+                keyAlias "androiddebugkey"
+                keyPassword "android"
             }
         }
 
         buildTypes {
             release {
                 minifyEnabled false
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             }
         }
 
@@ -81,22 +99,25 @@ configure(project(':gdk').subprojects) {
     }
 }
 
-configure(project(':sdk').subprojects) {
-    apply plugin: 'com.android.application'
-    apply plugin: 'android-command'
+configure(project(":sdk").subprojects) {
+    apply plugin: "com.android.application"
+    apply plugin: "android-command"
+    apply plugin: "com.getkeepsafe.dexcount"
+    apply plugin: "com.vanniktech.android.apk.size"
 
     android {
         // Make sure we apply the correct tools
         compileSdkVersion 23
-        buildToolsVersion '23.0.0'
-        useLibrary 'org.apache.http.legacy'
+        buildToolsVersion "23.0.3"
 
-        // Set 'applicationId' in AndroidManifest.xml
+        useLibrary "org.apache.http.legacy"
+
+        // Set "applicationId" in AndroidManifest.xml
         defaultConfig {
             minSdkVersion 19
             targetSdkVersion 23
             versionCode 1
-            versionName '1.0'
+            versionName "1.0"
         }
 
         compileOptions {
@@ -106,17 +127,17 @@ configure(project(':sdk').subprojects) {
 
         signingConfigs {
             debug {
-                storeFile rootProject.file('debug.keystore')
-                storePassword 'android'
-                keyAlias 'androiddebugkey'
-                keyPassword 'android'
+                storeFile rootProject.file("./.buildscript/debug.keystore")
+                storePassword "android"
+                keyAlias "androiddebugkey"
+                keyPassword "android"
             }
         }
 
         buildTypes {
             release {
                 minifyEnabled false
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             }
         }
 

@@ -68,23 +68,23 @@ Read more:
  - GDK
    - [Camera App](gdk/camera-app)
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
-   - [Memo App] - *Andre Compagno*
+   - [Memo App](gdk/glass-memo) - *Andre Compagno*
      - Voice Memo Application
    - [Hello Glass](gdk/hello-glass)
      - Basic "HelloWorld"
    - [Location Example](gdk/location)
      - Basic Location on Live Cards
-   - [Voice Example]
+   - [Voice Example](gdk/voice-example)
      - Voice Recognition Example
  - OpenCV or Android SDK
    - [Glass Preview](sdk/camera-preview)
      - "Hotfix" for Google Glass camera preview - post-XE11
-   - [Image Manipulation]
-     - Mixed Processing and Camera Control Tutorials
-     - Canny, Sobel, RGBA, Gray, Feature Detection, etc
-   - [Face Detection]
+   - [Face Detection](sdk/ocv-face-detection)
      - "Hotfix" for Google Glass camera preview - post-XE11
      - Optimization coming soon
+   - [Image Manipulation](sdk/ocv-image-manipulation)
+     - Mixed Processing and Camera Control Tutorials
+     - Canny, Sobel, RGBA, Gray, Feature Detection, etc
 
 
 <a name="third-party"/>

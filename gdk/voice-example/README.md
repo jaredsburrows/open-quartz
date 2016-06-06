@@ -6,15 +6,15 @@ This application is an example of how to get text from the voice recognition on 
 - The application publishes a card to the users timeline which displays what the user said
 
 - The application can be launched by using the "voice example" voice command
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshop-voice-trigger.png)
+![Screenshot](screenshots/screenshop-voice-trigger.png)
 
 - The user can then can talk and what they say will be recorded and transcribed to be used in the card
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-regonition.png)
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-text1.png)
+![Screenshot](screenshots/screenshot-regonition.png)
+![Screenshot](screenshots/screenshot-text1.png)
 
 - If the the card is already published, the original text will simply be changed to the new text 
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-regonition2.png)
-![Screenshot](https://raw.github.com/jaredsburrows/OpenGlass/master/example-apps/Voice%20Example/screenshot-text2.png)
+![Screenshot](screenshots/screenshot-regonition2.png)
+![Screenshot](screenshots/screenshot-text2.png)
 
 License
 ========

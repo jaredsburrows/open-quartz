@@ -1,6 +1,8 @@
 rootProject.name = "open-quartz"
 
 include ":gdk:camera-app"
+include ":gdk:glass-memo"
 include ":gdk:hello-glass"
 include ":gdk:location"
+include ":gdk:voice-example"
 include ":sdk:camera-preview"

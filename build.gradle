@@ -5,13 +5,13 @@ buildscript {
 
     dependencies {
         // Android gradle plugin
-        classpath "com.android.tools.build:gradle:2.1.0"
+        classpath "com.android.tools.build:gradle:2.1.2"
         // Android command plugin
         classpath "com.novoda:gradle-android-command-plugin:1.5.0"
         // Google error-prone
         classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.8"
         // Dex method count
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.2"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.4"
         // Check for plugin updates
         classpath "com.github.ben-manes:gradle-versions-plugin:0.12.0"
         // Apk size
@@ -61,12 +61,12 @@ configure(project(":gdk").subprojects) {
     android {
         // Make sure we apply the correct tools
         compileSdkVersion "Google Inc.:Glass Development Kit Preview:19"
-        buildToolsVersion "23.0.3"
+        buildToolsVersion "24.0.0"
 
         // Set "applicationId" in AndroidManifest.xml
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 23
+            targetSdkVersion 24
             versionCode 1
             versionName "1.0"
         }
@@ -106,15 +106,15 @@ configure(project(":sdk").subprojects) {
 
     android {
         // Make sure we apply the correct tools
-        compileSdkVersion 23
-        buildToolsVersion "23.0.3"
+        compileSdkVersion 24
+        buildToolsVersion "24.0.0"
 
-        useLibrary "org.apache.http.legacy"
+        // useLibrary "org.apache.http.legacy"
 
         // Set "applicationId" in AndroidManifest.xml
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 23
+            targetSdkVersion 24
             versionCode 1
             versionName "1.0"
         }

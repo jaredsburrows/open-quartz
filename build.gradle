@@ -27,13 +27,6 @@ allprojects {
         maven { url "https://plugins.gradle.org/m2/" } // Mirrors jcenter() and mavenCentral()
     }
 
-    // https://github.com/tbroyer/gradle-errorprone-plugin/issues/18
-    configurations.all {
-        resolutionStrategy {
-            force "com.google.errorprone:error_prone_core:2.0.5"
-        }
-    }
-
     tasks.withType(JavaCompile) {
         sourceCompatibility = JavaVersion.VERSION_1_7
         targetCompatibility = JavaVersion.VERSION_1_7

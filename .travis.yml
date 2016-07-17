@@ -14,18 +14,16 @@ android:
     - '.+'
 
 script:
-  - ./gradlew clean assembleDebug -s -i
-
-notifications:
-  email: false
+  - ./gradlew clean assembleDebug -Dscan --configure-on-demand --daemon --parallel --stacktrace
 
 sudo: false
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
 cache:
   directories:
+    - $HOME/.m2
     - $HOME/.gradle
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+

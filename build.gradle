@@ -1,20 +1,16 @@
 buildscript {
     repositories {
-        maven { url "https://plugins.gradle.org/m2/" } // Mirrors jcenter() and mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
 
     dependencies {
-        // Android gradle plugin
-        classpath "com.android.tools.build:gradle:2.1.2"
-        // Android command plugin
+        classpath "com.android.tools.build:gradle:2.1.3"
         classpath "com.novoda:gradle-android-command-plugin:1.6.0"
-        // Google error-prone
         classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.8"
-        // Dex method count
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.5"
-        // Check for plugin updates
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.0"
         classpath "com.github.ben-manes:gradle-versions-plugin:0.13.0"
-        // Apk size
         classpath "com.vanniktech:gradle-android-apk-size-plugin:0.2.0"
     }
 }
@@ -24,7 +20,9 @@ allprojects {
     apply plugin: "net.ltgt.errorprone"
 
     repositories {
-        maven { url "https://plugins.gradle.org/m2/" } // Mirrors jcenter() and mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
 
     tasks.withType(JavaCompile) {
@@ -32,7 +30,8 @@ allprojects {
         targetCompatibility = JavaVersion.VERSION_1_7
 
         configure(options) {
-            compilerArgs << "-Xlint:all" << "-Xlint:-options"
+            compilerArgs << "-Xlint:all"
+            compilerArgs << "-Xlint:-options"
             deprecation = true
             encoding = "UTF-8"
         }
@@ -54,7 +53,7 @@ configure(project(":gdk").subprojects) {
     android {
         // Make sure we apply the correct tools
         compileSdkVersion "Google Inc.:Glass Development Kit Preview:19"
-        buildToolsVersion "24.0.0"
+        buildToolsVersion "24.0.2"
 
         // Set "applicationId" in AndroidManifest.xml
         defaultConfig {
@@ -81,7 +80,8 @@ configure(project(":gdk").subprojects) {
         buildTypes {
             release {
                 minifyEnabled false
-                proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+                proguardFiles getDefaultProguardFile("proguard-android.txt")
+                proguardFile "proguard-rules.pro"
             }
         }
 
@@ -100,7 +100,7 @@ configure(project(":sdk").subprojects) {
     android {
         // Make sure we apply the correct tools
         compileSdkVersion 24
-        buildToolsVersion "24.0.0"
+        buildToolsVersion "24.0.2"
 
         // useLibrary "org.apache.http.legacy"
 
@@ -129,7 +129,8 @@ configure(project(":sdk").subprojects) {
         buildTypes {
             release {
                 minifyEnabled false
-                proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+                proguardFiles getDefaultProguardFile("proguard-android.txt")
+                proguardFile "proguard-rules.pro"
             }
         }
 

@@ -6,35 +6,21 @@ OpenQuartz
 
 **Open Source Google Glass Development**
 
-### Table of Contents  
- - [Getting Started](#getting-started)
-   - [Official Examples](#getting-started)
-   - [Important Libraries](#libraries)
-   - [Important ADB Commands](#adb)
- - [Example Applications](#example-apps)  
-   - OpenQuartz Open Source Applications
- - [Third Party Applications](#third-party)  
-   - Useful third party applications
- - [External Links](#external-links)  
-   - Official documentation and links for Google Glass as well as helpful links for developers 
-
-<a name="getting-started"/>
-### Google Glass Example GDK Applications:
+#### Google Glass Example GDK Applications:
  - [Compass](https://www.github.com/googleglass/apk-compass-sample)
  - [Level](https://www.github.com/googleglass/apk-level-sample)
  - [Stopwatch](https://www.github.com/googleglass/apk-stopwatch-sample)
  - [Waveform](https://www.github.com/googleglass/apk-waveform-sample)
 
-<a name="libraries"/>
 ### Important Libraries:
- - Google
-   - [Android Glass GDK](https://developers.google.com/glass/develop/gdk/)
-   - [Android SDK](http://developer.android.com/sdk/index.html)
-   - [Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)
- - Misc
-   - [OpenCV(OpenCV for Android)](http://opencv.org/platforms/android.html)
+- Google
+  - [Android Glass GDK](https://developers.google.com/glass/develop/gdk/)
+  - [Android SDK](http://developer.android.com/sdk/index.html)
+  - [Android NDK](http://developer.android.com/tools/sdk/ndk/index.html)
+- Misc
+  - [OpenCV(OpenCV for Android)](http://opencv.org/platforms/android.html)
 
-<a name="adb"/>
+
 ### Basic ADB Usage(For Terminal or CMD Prompt):
 Information for side loading Android applications.
 
@@ -65,8 +51,6 @@ Read more:
  - http://developer.android.com/tools/help/adb.html
  - http://stackoverflow.com/questions/11201659/whats-android-adb-shell-dumpsys-tool-and-its-benefits
 
-
-<a name="example-apps"/>
 ### Example Applications for Google Glass:
  - GDK
    - [Camera App](gdk/camera-app)
@@ -88,33 +72,30 @@ Read more:
    - [Image Manipulation](sdk/ocv-image-manipulation)
      - Mixed Processing and Camera Control Tutorials
      - Canny, Sobel, RGBA, Gray, Feature Detection, etc
-
-
-<a name="third-party"/>
+     
 ### Third Party Applications([/third-party](third-party)):
 Here are helpful applications to install on your Glass in order to start testing and developing.
 - Android Applications
- - API Demos
- - Barcode Scanner
- - Capture Activity
- - Dev Tools
- - Launcher
-   - Regular ICS Launcher
- - [Launchy (update to XE11 first)](https://github.com/kaze0/launchy)
- - [OpenCV for Android](https://play.google.com/store/apps/details?id=org.opencv.engine)
- - Settings(Settings.apk)
- - [Settings for Glass(Setttings_Full.apk)](http://forum.xda-developers.com/showthread.php?t=2576224)
- - [Terminal Emulator](https://play.google.com/store/apps/details?id=jackpal.androidterm)
+  - API Demos
+  - Barcode Scanner
+  - Capture Activity
+  - Dev Tools
+  - Launcher
+    - Regular ICS Launcher
+  - [Launchy (update to XE11 first)](https://github.com/kaze0/launchy)
+  - [OpenCV for Android](https://play.google.com/store/apps/details?id=org.opencv.engine)
+  - Settings(Settings.apk)
+  - [Settings for Glass(Setttings_Full.apk)](http://forum.xda-developers.com/showthread.php?t=2576224)
+  - [Terminal Emulator](https://play.google.com/store/apps/details?id=jackpal.androidterm)
 - Helpful Tools
- - [Android Screen Monitor](https://code.google.com/p/android-screen-monitor/)
+  - [Android Screen Monitor](https://code.google.com/p/android-screen-monitor/)
 
-<a name="external-links"/>
 ### Google Glass Resources:
- - [Overview](https://developers.google.com/glass/)
- - [Basic Setup](https://glass.google.com/u/0/setup)
- - [Technical Specifications](https://support.google.com/glass/answer/3064128)
- - [Developer Guidelines](https://developers.google.com/glass/guidelines)
- - [GDK](https://developers.google.com/glass/develop/gdk/)
- - [Github](https://github.com/googleglass)
- - [Boot Images and Kernels](https://developers.google.com/glass/downloads/system)
- - [Glass-Apps: Developers, Blogs and News](http://glass-apps.org/)
+- [Overview](https://developers.google.com/glass/)
+- [Basic Setup](https://glass.google.com/u/0/setup)
+- [Technical Specifications](https://support.google.com/glass/answer/3064128)
+- [Developer Guidelines](https://developers.google.com/glass/guidelines)
+- [GDK](https://developers.google.com/glass/develop/gdk/)
+- [Github](https://github.com/googleglass)
+- [Boot Images and Kernels](https://developers.google.com/glass/downloads/system)
+- [Glass-Apps: Developers, Blogs and News](http://glass-apps.org/)

@@ -4,23 +4,23 @@ jdk:
  - oraclejdk8
 
 install:
-  - echo y | android update sdk -u -a -t tools
-  - echo y | android update sdk -u -a -t platform-tools
-  - echo y | android update sdk -u -a -t build-tools-24.0.2
-  - echo y | android update sdk -u -a -t android-24
-  - echo y | android update sdk -u -a -t extra-google-m2repository
-  - echo y | android update sdk -u -a -t extra-android-m2repository
-  - echo y | android update sdk -u -a -t addon-google_gdk-google-19
+  - echo yes | sdkmanager "tools"
+  - echo yes | sdkmanager "platform-tools"
+  - echo yes | sdkmanager "build-tools;26.0.1"
+  - echo yes | sdkmanager "platforms;android-26"
+  - echo yes | sdkmanager "add-ons;addon-google_gdk-google-19"
 
 script:
-  - ./gradlew clean assembleDebug -Dscan --configure-on-demand --parallel --stacktrace
+  - ./gradlew clean assembleDebug --stacktrace --scan
 
 sudo: false
 
 before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
 cache:
   directories:
-    - $HOME/.gradle
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache

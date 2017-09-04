@@ -1,17 +1,15 @@
 buildscript {
     repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:2.1.3"
-        classpath "com.novoda:gradle-android-command-plugin:1.6.0"
-        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.8"
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.0"
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.13.0"
-        classpath "com.vanniktech:gradle-android-apk-size-plugin:0.2.0"
+        classpath "com.android.tools.build:gradle:2.3.3"
+        classpath "com.novoda:gradle-android-command-plugin:1.7.1"
+        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.11"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3"
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.15.0"
+        classpath "com.vanniktech:gradle-android-apk-size-plugin:0.4.0"
     }
 }
 
@@ -20,9 +18,7 @@ allprojects {
     apply plugin: "net.ltgt.errorprone"
 
     repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     tasks.withType(JavaCompile) {
@@ -51,14 +47,12 @@ configure(project(":gdk").subprojects) {
     apply plugin: "com.vanniktech.android.apk.size"
 
     android {
-        // Make sure we apply the correct tools
         compileSdkVersion "Google Inc.:Glass Development Kit Preview:19"
-        buildToolsVersion "24.0.2"
+        buildToolsVersion "26.0.1"
 
-        // Set "applicationId" in AndroidManifest.xml
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 24
+            targetSdkVersion 26
             versionCode 1
             versionName "1.0"
         }
@@ -98,16 +92,12 @@ configure(project(":sdk").subprojects) {
     apply plugin: "com.vanniktech.android.apk.size"
 
     android {
-        // Make sure we apply the correct tools
-        compileSdkVersion 24
-        buildToolsVersion "24.0.2"
+        compileSdkVersion 26
+        buildToolsVersion "26.0.1"
 
-        // useLibrary "org.apache.http.legacy"
-
-        // Set "applicationId" in AndroidManifest.xml
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 24
+            targetSdkVersion 26
             versionCode 1
             versionName "1.0"
         }

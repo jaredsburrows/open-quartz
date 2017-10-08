@@ -4,11 +4,11 @@ jdk:
  - oraclejdk8
 
 install:
-  - echo yes | sdkmanager "tools"
-  - echo yes | sdkmanager "platform-tools"
-  - echo yes | sdkmanager "build-tools;26.0.1"
-  - echo yes | sdkmanager "platforms;android-26"
-  - echo yes | sdkmanager "add-ons;addon-google_gdk-google-19"
+  - echo yes | sdkmanager "tools" &>/dev/null
+  - echo yes | sdkmanager "platform-tools" &>/dev/null
+  - echo yes | sdkmanager "build-tools;26.0.2" &>/dev/null
+  - echo yes | sdkmanager "platforms;android-26" &>/dev/null
+  - echo yes | sdkmanager "add-ons;addon-google_gdk-google-19" &>/dev/null
 
 script:
   - ./gradlew clean assembleDebug --stacktrace --scan

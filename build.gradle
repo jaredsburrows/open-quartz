@@ -7,7 +7,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:2.3.3"
         classpath "com.novoda:gradle-android-command-plugin:1.7.1"
         classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.11"
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.1"
         classpath "com.github.ben-manes:gradle-versions-plugin:0.15.0"
         classpath "com.vanniktech:gradle-android-apk-size-plugin:0.4.0"
     }
@@ -48,7 +48,7 @@ configure(project(":gdk").subprojects) {
 
     android {
         compileSdkVersion "Google Inc.:Glass Development Kit Preview:19"
-        buildToolsVersion "26.0.1"
+        buildToolsVersion "26.0.2"
 
         defaultConfig {
             minSdkVersion 19
@@ -93,7 +93,7 @@ configure(project(":sdk").subprojects) {
 
     android {
         compileSdkVersion 26
-        buildToolsVersion "26.0.1"
+        buildToolsVersion "26.0.2"
 
         defaultConfig {
             minSdkVersion 19

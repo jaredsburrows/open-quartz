@@ -5,10 +5,10 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:2.3.3"
-        classpath "com.novoda:gradle-android-command-plugin:1.7.1"
-        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.11"
-        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.1"
+        classpath "com.android.tools.build:gradle:3.1.4"
+        classpath "com.novoda:gradle-android-command-plugin:2.0.1"
+        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.6"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.3"
         classpath "com.github.ben-manes:gradle-versions-plugin:0.20.0"
         classpath "com.vanniktech:gradle-android-apk-size-plugin:0.4.0"
     }
@@ -19,7 +19,8 @@ allprojects {
     apply plugin: "net.ltgt.errorprone"
 
     repositories {
-        maven { url "https://plugins.gradle.org/m2/" }
+        google()
+        gradlePluginPortal()
     }
 
     tasks.withType(JavaCompile) {
@@ -49,11 +50,10 @@ configure(project(":gdk").subprojects) {
 
     android {
         compileSdkVersion "Google Inc.:Glass Development Kit Preview:19"
-        buildToolsVersion "26.0.2"
 
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 26
+            targetSdkVersion 28
             versionCode 1
             versionName "1.0"
         }
@@ -93,12 +93,11 @@ configure(project(":sdk").subprojects) {
     apply plugin: "com.vanniktech.android.apk.size"
 
     android {
-        compileSdkVersion 26
-        buildToolsVersion "26.0.2"
+        compileSdkVersion 28
 
         defaultConfig {
             minSdkVersion 19
-            targetSdkVersion 26
+            targetSdkVersion 28
             versionCode 1
             versionName "1.0"
         }

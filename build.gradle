@@ -30,7 +30,6 @@ allprojects {
         configure(options) {
             compilerArgs << "-Xlint:all"
             compilerArgs << "-Xlint:-options"
-            deprecation = true
             encoding = "UTF-8"
         }
     }

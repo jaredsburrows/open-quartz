@@ -1,19 +1,16 @@
 language: android
 
-jdk:
-  - oraclejdk8
+jdk: oraclejdk8
 
 install:
-  - echo yes | sdkmanager "tools" &>/dev/null
-  - echo yes | sdkmanager "platform-tools" &>/dev/null
-  - echo yes | sdkmanager "platforms;android-28" &>/dev/null
-  - echo yes | sdkmanager "add-ons;addon-google_gdk-google-19" &>/dev/null
-  - echo yes | sdkmanager --update &>/dev/null
-  - echo yes | sdkmanager --licenses &>/dev/null
+  - yes | sdkmanager "tools" &>/dev/null
+  - yes | sdkmanager "platform-tools" &>/dev/null
+  - yes | sdkmanager "platforms;android-28" &>/dev/null
+  - yes | sdkmanager "add-ons;addon-google_gdk-google-19" &>/dev/null
+  - yes | sdkmanager --licenses &>/dev/null
+  - yes | sdkmanager --update &>/dev/null
 
-install:
-  # Build debug and release(run proguard)
-  - ./gradlew clean assemble -s --scan
+script: ./gradlew clean assemble -s
 
 sudo: false
 

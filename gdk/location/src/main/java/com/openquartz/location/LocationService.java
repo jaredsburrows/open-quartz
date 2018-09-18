@@ -22,95 +22,61 @@ public class LocationService extends Service implements LocationListener {
     private LiveCard mLiveCard;
 //    private TimelineManager mTimelineManager;
 
-    /*
-     * (non-Javadoc)
-     * @see android.app.Service#onBind(android.content.Intent)
-     */
     @Override
-    public IBinder onBind(final Intent intent) {
+    public IBinder onBind(Intent intent) {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see android.app.Service#onCreate()
-     */
     @Override
     public void onCreate() {
         super.onCreate();
-//        this.mTimelineManager = TimelineManager.from(this);
+//        mTimelineManager = TimelineManager.from(this);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see android.app.Service#onDestroy()
-     */
     @Override
     public void onDestroy() {
-        if ((this.mLiveCard != null) && this.mLiveCard.isPublished()) {
-            if (this.mCallback != null) {
-                this.mLiveCard.getSurfaceHolder()
-                        .removeCallback(this.mCallback);
+        if ((mLiveCard != null) && mLiveCard.isPublished()) {
+            if (mCallback != null) {
+                mLiveCard.getSurfaceHolder().removeCallback(mCallback);
             }
-            this.mLiveCard.unpublish();
-            this.mLiveCard = null;
+            mLiveCard.unpublish();
+            mLiveCard = null;
         }
 
         super.onDestroy();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * android.location.LocationListener#onLocationChanged(android.location.
-     * Location)
-     */
     @Override
-    public void onLocationChanged(final Location location) {
+    public void onLocationChanged(Location location) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * android.location.LocationListener#onProviderDisabled(java.lang.String)
-     */
     @Override
-    public void onProviderDisabled(final String provider) {
+    public void onProviderDisabled(String provider) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * android.location.LocationListener#onProviderEnabled(java.lang.String)
-     */
     @Override
-    public void onProviderEnabled(final String provider) {
+    public void onProviderEnabled(String provider) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see android.app.Service#onStartCommand(android.content.Intent, int, int)
-     */
     @Override
-    public int onStartCommand(final Intent intent, final int flags,
-            final int startId) {
-        if (this.mLiveCard == null) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (mLiveCard == null) {
             Log.d(LocationService.TAG, "Publishing LiveCard");
-//            this.mLiveCard = this.mTimelineManager
+//            mLiveCard = mTimelineManager
 //                    .createLiveCard(LocationService.LIVE_CARD_TAG);
 
             // Keep track of the callback to remove it before unpublishing.
-            this.mCallback = new ChronometerDrawer(this);
-            this.mLiveCard.setDirectRenderingEnabled(true).getSurfaceHolder()
-                    .addCallback(this.mCallback);
+            mCallback = new ChronometerDrawer(this);
+            mLiveCard.setDirectRenderingEnabled(true).getSurfaceHolder()
+                    .addCallback(mCallback);
 
             final Intent menuIntent = new Intent(this, MenuActivity.class);
             menuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            this.mLiveCard.setAction(PendingIntent.getActivity(this, 0,
+            mLiveCard.setAction(PendingIntent.getActivity(this, 0,
                     menuIntent, 0));
 
-            this.mLiveCard.publish(PublishMode.REVEAL);
+            mLiveCard.publish(PublishMode.REVEAL);
             Log.d(LocationService.TAG, "Done publishing LiveCard");
         } else {
             // TODO(alainv): Jump to the LiveCard when API is available.
@@ -119,13 +85,8 @@ public class LocationService extends Service implements LocationListener {
         return Service.START_STICKY;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see android.location.LocationListener#onStatusChanged(java.lang.String,
-     * int, android.os.Bundle)
-     */
     @Override
-    public void onStatusChanged(final String provider, final int status,
+    public void onStatusChanged(String provider, final int status,
             final Bundle extras) {
     }
 }

@@ -30,11 +30,11 @@ public class LiveCardService extends Service {
         if (mLiveCard == null) {
             mLiveCard = new LiveCard(this, LIVE_CARD_TAG);
 
-            RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.live_card);
+            final RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.live_card);
             mLiveCard.setViews(remoteViews);
 
             // Display the options menu when the live card is tapped.
-            Intent menuIntent = new Intent(this, LiveCardMenuActivity.class);
+            final Intent menuIntent = new Intent(this, LiveCardMenuActivity.class);
             mLiveCard.setAction(PendingIntent.getActivity(this, 0, menuIntent, 0));
             mLiveCard.publish(PublishMode.REVEAL);
         } else {

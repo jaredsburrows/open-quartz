@@ -17,12 +17,12 @@ public class LiveCardMenuActivity extends Activity {
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         // Open the options menu right away.
-        this.openOptionsMenu();
+        openOptionsMenu();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.live_card, menu);
+        getMenuInflater().inflate(R.menu.live_card, menu);
         return true;
     }
 
@@ -31,7 +31,7 @@ public class LiveCardMenuActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_stop:
                 // Stop the service which will unpublish the live card.
-                this.stopService(new Intent(this, LiveCardService.class));
+                stopService(new Intent(this, LiveCardService.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -42,6 +42,6 @@ public class LiveCardMenuActivity extends Activity {
     public void onOptionsMenuClosed(Menu menu) {
         super.onOptionsMenuClosed(menu);
         // Nothing else to do, finish the Activity.
-        this.finish();
+        finish();
     }
 }

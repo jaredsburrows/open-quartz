@@ -12,19 +12,19 @@ public class LocationProvider {
     private final Geocoder mGeocoder;
     private final LocationManager mLocationManager;
 
-    public LocationProvider(final Context context) {
-        this.mLocationManager = (LocationManager) context
+    public LocationProvider(Context context) {
+        mLocationManager = (LocationManager) context
                 .getSystemService(Context.LOCATION_SERVICE);
-        this.mGeocoder = new Geocoder(context);
+        mGeocoder = new Geocoder(context);
 
         final Criteria criteria = new Criteria();
-        this.mBestProvider = this.mLocationManager.getBestProvider(criteria,
+        mBestProvider = mLocationManager.getBestProvider(criteria,
                 true);
 
-        final List<String> providers = this.mLocationManager.getProviders(
+        final List<String> providers = mLocationManager.getProviders(
                 criteria, true);
 
-        for (final String provider : providers) {
+        for (String provider : providers) {
             // mLocationManager.requestLocationUpdates(provider, 0, 0, this);
         }
     }
@@ -34,10 +34,9 @@ public class LocationProvider {
      */
     public String getBestProvider() {
         final Criteria criteria = new Criteria();
-        this.mBestProvider = this.mLocationManager.getBestProvider(criteria,
-                true);
+        mBestProvider = mLocationManager.getBestProvider(criteria, true);
 
-        return this.mBestProvider;
+        return mBestProvider;
     }
 
 }

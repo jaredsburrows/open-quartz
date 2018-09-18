@@ -11,11 +11,10 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
 
     private Camera camera;
 
-    @SuppressWarnings("deprecation")
     public CameraSurfaceView(Context context) {
         super(context);
 
-        final SurfaceHolder surfaceHolder = this.getHolder();
+        final SurfaceHolder surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
@@ -28,7 +27,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         try {
             camera.setPreviewDisplay(holder);
         } catch (IOException e) {
-            this.releaseCamera();
+            releaseCamera();
         }
     }
 
@@ -43,7 +42,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         // Do not hold the camera during surfaceDestroyed - view should be gone
-        this.releaseCamera();
+        releaseCamera();
     }
 
     /**

@@ -17,12 +17,12 @@ public class CountDownView extends FrameLayout {
         /**
          * Notified when the countdown is finished.
          */
-        public void onFinish();
+        void onFinish();
 
         /**
          * Notified of a tick, indicating a layout change.
          */
-        public void onTick(long millisUntilFinish);
+        void onTick(long millisUntilFinish);
     }
 
     private static final float ALPHA_DELIMITER = 0.95f;
@@ -46,94 +46,87 @@ public class CountDownView extends FrameLayout {
     private final Runnable mUpdateViewRunnable = new Runnable() {
         @Override
         public void run() {
-            final long millisLeft = CountDownView.this.mStopTimeInFuture
-                    - SystemClock.elapsedRealtime();
+            final long millisLeft = mStopTimeInFuture - SystemClock.elapsedRealtime();
 
             // Count down is done.
             if (millisLeft <= 0) {
-                CountDownView.this.mStarted = false;
-                if (CountDownView.this.mListener != null) {
-                    CountDownView.this.mListener.onFinish();
+                mStarted = false;
+                if (mListener != null) {
+                    mListener.onFinish();
                 }
             } else {
-                CountDownView.this.updateView(millisLeft);
-                if (CountDownView.this.mListener != null) {
-                    CountDownView.this.mListener.onTick(millisLeft);
+                updateView(millisLeft);
+                if (mListener != null) {
+                    mListener.onTick(millisLeft);
                 }
-                CountDownView.this.mHandler.postDelayed(
-                        CountDownView.this.mUpdateViewRunnable,
-                        CountDownView.DELAY_MILLIS);
+                mHandler.postDelayed(mUpdateViewRunnable, CountDownView.DELAY_MILLIS);
             }
         }
     };
 
-    public CountDownView(final Context context) {
+    public CountDownView(Context context) {
         this(context, null, 0);
     }
 
-    public CountDownView(final Context context, final AttributeSet attrs) {
+    public CountDownView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CountDownView(final Context context, final AttributeSet attrs,
+    public CountDownView(Context context, AttributeSet attrs,
             final int style) {
         super(context, attrs, style);
 //        LayoutInflater.from(context).inflate(R.layout.card_countdown, this);
 
-//        this.mSecondsView = (TextView) this.findViewById(R.id.seconds_view);
+//        mSecondsView = (TextView) findViewById(R.id.seconds_view);
     }
 
     public long getCountDown() {
-        return this.mTimeSeconds;
+        return mTimeSeconds;
     }
 
-    public void setCountDown(final long timeSeconds) {
-        this.mTimeSeconds = timeSeconds;
+    public void setCountDown(long timeSeconds) {
+        mTimeSeconds = timeSeconds;
     }
 
     /**
      * Set a {@link CountDownListener}.
      */
-    public void setListener(final CountDownListener listener) {
-        this.mListener = listener;
+    public void setListener(CountDownListener listener) {
+        mListener = listener;
     }
 
     /**
      * Starts the countdown animation if not yet started.
      */
     public void start() {
-        if (!this.mStarted) {
-            this.mStopTimeInFuture = TimeUnit.SECONDS
-                    .toMillis(this.mTimeSeconds)
+        if (!mStarted) {
+            mStopTimeInFuture = TimeUnit.SECONDS.toMillis(mTimeSeconds)
                     + SystemClock.elapsedRealtime();
-            this.mStarted = true;
-            this.mHandler.postDelayed(this.mUpdateViewRunnable,
-                    CountDownView.DELAY_MILLIS);
+            mStarted = true;
+            mHandler.postDelayed(mUpdateViewRunnable, CountDownView.DELAY_MILLIS);
         }
     }
 
     /**
      * Updates the views to reflect the current state of animation.
-     *
-     * @params millisUntilFinish milliseconds until the countdown is done
      */
-    private void updateView(final long millisUntilFinish) {
+    private void updateView(long millisUntilFinish) {
 //        final long currentTimeSeconds = TimeUnit.MILLISECONDS
 //                .toSeconds(millisUntilFinish) + 1;
 //        final long frame = CountDownView.SEC_TO_MILLIS
 //                - (millisUntilFinish % CountDownView.SEC_TO_MILLIS);
 //
-//        this.mSecondsView.setText(Long.toString(currentTimeSeconds));
+//        mSecondsView.setText(Long.toString(currentTimeSeconds));
 //        if (frame <= CountDownView.ANIMATION_DURATION_IN_MILLIS) {
 //            final float factor = frame
 //                    / CountDownView.ANIMATION_DURATION_IN_MILLIS;
-//            this.mSecondsView.setAlpha(factor * CountDownView.ALPHA_DELIMITER);
-//            this.mSecondsView.setTranslationY(CountDownView.MAX_TRANSLATION_Y
+//            mSecondsView.setAlpha(factor * CountDownView.ALPHA_DELIMITER);
+//            mSecondsView.setTranslationY(CountDownView.MAX_TRANSLATION_Y
 //                    * (1 - factor));
 //        } else {
 //            final float factor = (frame - CountDownView.ANIMATION_DURATION_IN_MILLIS)
 //                    / CountDownView.ANIMATION_DURATION_IN_MILLIS;
-//            this.mSecondsView.setAlpha(CountDownView.ALPHA_DELIMITER
+//            mSecondsView.setAlpha(CountDownView.ALPHA_DELIMITER
 //                    + (factor * (1 - CountDownView.ALPHA_DELIMITER)));
 //        }
     }

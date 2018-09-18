@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
         cameraView = new CameraSurfaceView(this);
 
         // Set the view
-        this.setContentView(cameraView);
+        setContentView(cameraView);
     }
 
     @Override

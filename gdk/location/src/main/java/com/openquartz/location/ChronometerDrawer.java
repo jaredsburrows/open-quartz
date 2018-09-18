@@ -9,81 +9,56 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
     private final ChronometerView mChronometerView;
     private SurfaceHolder mHolder;
 
-    public ChronometerDrawer(final Context context) {
-
-        this.mChronometerView = new ChronometerView(context);
-        this.mChronometerView.setListener(new ChronometerView.ChangeListener() {
-            /*
-             * (non-Javadoc)
-             * @see com.google.android.glass.sample.stopwatch.ChronometerView.
-             * ChangeListener#onChange()
-             */
+    public ChronometerDrawer(Context context) {
+        mChronometerView = new ChronometerView(context);
+        mChronometerView.setListener(new ChronometerView.ChangeListener() {
             @Override
             public void onChange() {
-                ChronometerDrawer.this
-                        .draw(ChronometerDrawer.this.mChronometerView);
+                draw(mChronometerView);
             }
         });
-        this.mChronometerView.setForceStart(true);
+        mChronometerView.setForceStart(true);
     }
 
     /**
      * Draws the view in the SurfaceHolder's canvas.
      */
-    private void draw(final View view) {
+    private void draw(View view) {
         Canvas canvas;
         try {
-            canvas = this.mHolder.lockCanvas();
-        } catch (final Exception e) {
+            canvas = mHolder.lockCanvas();
+        } catch (Exception e) {
             return;
         }
 
         if (canvas != null) {
             view.draw(canvas);
-            this.mHolder.unlockCanvasAndPost(canvas);
+            mHolder.unlockCanvasAndPost(canvas);
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * android.view.SurfaceHolder.Callback#surfaceChanged(android.view.SurfaceHolder
-     * , int, int, int)
-     */
     @Override
-    public void surfaceChanged(final SurfaceHolder holder, final int format,
-            final int width, final int height) {
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         final int measuredWidth = View.MeasureSpec.makeMeasureSpec(width,
                 View.MeasureSpec.EXACTLY);
         final int measuredHeight = View.MeasureSpec.makeMeasureSpec(height,
                 View.MeasureSpec.EXACTLY);
 
-        this.mChronometerView.measure(measuredWidth, measuredHeight);
-        this.mChronometerView.layout(0, 0,
-                this.mChronometerView.getMeasuredWidth(),
-                this.mChronometerView.getMeasuredHeight());
+        mChronometerView.measure(measuredWidth, measuredHeight);
+        mChronometerView.layout(0, 0,
+                mChronometerView.getMeasuredWidth(),
+                mChronometerView.getMeasuredHeight());
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * android.view.SurfaceHolder.Callback#surfaceCreated(android.view.SurfaceHolder
-     * )
-     */
     @Override
-    public void surfaceCreated(final SurfaceHolder holder) {
-        this.mHolder = holder;
-        this.mChronometerView.start();
+    public void surfaceCreated(SurfaceHolder holder) {
+        mHolder = holder;
+        mChronometerView.start();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see android.view.SurfaceHolder.Callback#surfaceDestroyed(android.view.
-     * SurfaceHolder)
-     */
     @Override
-    public void surfaceDestroyed(final SurfaceHolder holder) {
-        this.mChronometerView.stop();
-        this.mHolder = null;
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        mChronometerView.stop();
+        mHolder = null;
     }
 }

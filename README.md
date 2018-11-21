@@ -56,7 +56,7 @@ Read more:
  - GDK
    - [Camera App](gdk/camera-app)
      - Basic Camera application with Camera preview - with "Hotfix" - post-XE11
-   - [Memo App](gdk/glass-memo) - *Andre Compagno*
+   - [Memo App](gdk/glass-memo) - *Andre Compagno* [(@acompagno)](https://github.com/acompagno)
      - Voice Memo Application
    - [Hello Glass](gdk/hello-glass)
      - Basic "HelloWorld"

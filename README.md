@@ -2,7 +2,7 @@ OpenQuartz
 =========
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Status](https://travis-ci.org/jaredsburrows/open-quartz.svg?branch=master)](https://travis-ci.org/jaredsburrows/open-quartz)
+[![Build](https://github.com/jaredsburrows/open-quartz/workflows/build/badge.svg)](https://github.com/jaredsburrows/open-quartz/actions)
 [![Twitter Follow](https://img.shields.io/twitter/follow/jaredsburrows.svg?style=social)](https://twitter.com/jaredsburrows)
 
 **Open Source Google Glass Development**

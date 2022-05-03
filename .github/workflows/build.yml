@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         java-version:
-          - 1.8
+          - 8
           - 11
 
     steps:
@@ -42,6 +42,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 1.8
+          distribution: temurin
 
       - name: Download Google Glass SDK
         run: echo "y" | sudo $ANDROID_HOME/tools/bin/sdkmanager "add-ons;addon-google_gdk-google-19" &>/dev/null
@@ -53,6 +54,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: ${{ matrix.java-version }}
+          distribution: temurin
 
       - name: Build APK
         run: ./gradlew clean build -s

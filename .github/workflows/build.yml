@@ -21,42 +21,26 @@ jobs:
           - 11
 
     steps:
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper/
-            ~/.android/build-cache
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle
-
       - name: Checkout Project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.3.0
 
       - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/wrapper-validation-action@v1.0.6
 
-      - name: Configure JDK for sdkmanager
-        uses: actions/setup-java@v3
+      - name: Setup Java ${{ matrix.java-version }}
+        uses: actions/setup-java@v3.10.0
         with:
-          java-version: 8
           distribution: temurin
-
-      - name: Download Google Glass SDK
-        run: echo "y" | sudo $ANDROID_HOME/tools/bin/sdkmanager "add-ons;addon-google_gdk-google-19" &>/dev/null
-
-      - name: Accept Licenses
-        run: echo "y" | sudo $ANDROID_HOME/tools/bin/sdkmanager --licenses &>/dev/null
-
-      - name: Configure JDK
-        uses: actions/setup-java@v3
-        with:
           java-version: ${{ matrix.java-version }}
-          distribution: temurin
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2.0.10
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2.4.0
 
       - name: Build APK
-        run: ./gradlew clean build -s
+        run: ./gradlew assembleDebug -s
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3

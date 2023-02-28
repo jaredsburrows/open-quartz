@@ -13,11 +13,6 @@ buildscript {
 allprojects {
     apply plugin: "com.github.ben-manes.versions"
 
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
-
     tasks.withType(JavaCompile) {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

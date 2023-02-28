@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.openquartz.voiceexample" >
+    package="com.openquartz.voiceexample">
 
     <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name">
         <activity
             android:name="com.openquartz.voiceexample.MenuActivity"
             android:enabled="true"
             android:label="@string/app_name"
-            android:theme="@style/MenuTheme" >
-        </activity>
+            android:theme="@style/MenuTheme" />
 
         <service
             android:name="com.openquartz.voiceexample.CardLaunchService"
             android:enabled="true"
             android:exported="false"
             android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
             </intent-filter>

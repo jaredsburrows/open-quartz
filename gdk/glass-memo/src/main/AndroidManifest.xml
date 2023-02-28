@@ -36,19 +36,19 @@
         <activity
             android:name="com.openquartz.glassmemo.MemoScrollActivity"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name="com.openquartz.glassmemo.ViewMemoMenuActivity"
             android:exported="false"
-            android:theme="@style/MenuTheme"/>
+            android:theme="@style/MenuTheme" />
         <activity
             android:name="com.openquartz.glassmemo.ViewMemoMenuActivityNoMemos"
             android:exported="false"
-            android:theme="@style/MenuTheme"/>
+            android:theme="@style/MenuTheme" />
         <activity
             android:name="com.openquartz.glassmemo.MemoScrollMenuActivity"
             android:exported="false"
-            android:theme="@style/MenuTheme"/>
+            android:theme="@style/MenuTheme" />
     </application>
 
 </manifest>

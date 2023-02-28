@@ -12,8 +12,8 @@
         android:label="@string/app_name">
         <activity
             android:name="com.openquartz.helloglass.MainActivity"
-            android:label="@string/app_name"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

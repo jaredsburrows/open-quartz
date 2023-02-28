@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.openquartz.helloglass">
+    package="com.openquartz.helloglass">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.openquartz.helloglass.activities.LiveCardMenuActivity"
-            android:theme="@style/MenuTheme"/>
+            android:enabled="true"
+            android:theme="@style/MenuTheme" />
 
         <service
             android:name="com.openquartz.helloglass.services.LiveCardService"
@@ -17,12 +18,12 @@
             android:icon="@drawable/ic_glass_logo"
             android:label="@string/title_activity_live_card_service">
             <intent-filter>
-                <action android:name="com.google.android.glass.action.VOICE_TRIGGER"/>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
             </intent-filter>
 
             <meta-data
                 android:name="com.google.android.glass.VoiceTrigger"
-                android:resource="@xml/voice_trigger"/>
+                android:resource="@xml/voice_trigger" />
         </service>
     </application>
 

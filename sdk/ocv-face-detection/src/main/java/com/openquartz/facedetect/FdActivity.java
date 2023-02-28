@@ -127,7 +127,7 @@ public class FdActivity extends Activity
                         // Viola and Jones[2] adapted the idea of using Haar wavelets and developed the so-called Haar-like feature
                         mCascadeFile = new File(cascadeDir, "haarcascade_frontalface_alt.xml");
 
-                        // http://docs.opencv.org/trunk/doc/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html#face-detection
+                        // https://docs.opencv.org/trunk/doc/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html#face-detection
                         FileOutputStream os = new FileOutputStream(mCascadeFile);
 
                         byte[] buffer = new byte[4096];

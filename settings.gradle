@@ -1,32 +1,32 @@
 pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
 }
 
 plugins {
-  id "com.gradle.develocity" version "3.17.2"
+    id "com.gradle.develocity" version "3.17.2"
 }
 
 develocity {
-  buildScan {
-    termsOfUseUrl = "https://gradle.com/terms-of-service"
-    termsOfUseAgree = "yes"
-    def isCI = System.getenv("CI") != null
-    publishing.onlyIf { isCI }
-  }
+    buildScan {
+        termsOfUseUrl = "https://gradle.com/terms-of-service"
+        termsOfUseAgree = "yes"
+        def isCI = System.getenv("CI") != null
+        publishing.onlyIf { isCI }
+    }
 }
 
 dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
 }
 
 rootProject.name = "open-quartz"
